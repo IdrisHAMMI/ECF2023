@@ -1,0 +1,36 @@
+.test {
+  width: 15%;
+  margin-top: 20px
+}
+
+.index_header {
+  padding-left: 100px;
+}
+
+.navbar {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.navbar-nav {
+  padding-right: 100px;
+}
+
+button {
+  margin-bottom: 15px;
+  padding: 9px 40px;
+  background-color:rgb(255, 255, 255);
+  border-color: rgba(0, 85, 243,0.8);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  background-color: rgba(0, 85, 243,0.8);
+}
+
+table {
+  width: 100%;
+  overflow-x: auto;
+}
