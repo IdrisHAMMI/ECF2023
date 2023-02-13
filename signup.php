@@ -42,12 +42,12 @@
             <input type="password" class="form-control" name="pwdrepeat" placeholder="Retapper votre Mot de Passe"/>
           </div>
           <div class="form-group">
-            <label for="alergies">Avez vous des allergies?</label>
-            <input type="alergies" class="form-control" name="alergies" placeholder="Avez vous des allergies?"/>
+            <label for="allergies">Avez vous des allergies?</label>
+            <input type="text" class="form-control" name="allergies" placeholder="Avez vous des allergies?"/>
           </div>
           <div class="form-group">
             <label for="convives">Avez vous des convives?</label>
-          <input type="convives" class="form-control" name="convives" placeholder="Avez vous des convives?"/>
+          <input type="text" class="form-control" name="convives" placeholder="Avez vous des convives?"/>
           </div>
             </div>
             <br>

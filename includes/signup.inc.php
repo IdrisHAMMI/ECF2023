@@ -3,7 +3,6 @@
 if (isset($_POST["submit"])) {
   
   $email = $_POST["email"];
-  $role = $_POST["role_user"];
   $password = $_POST["password"];
   $pwdRepeat = $_POST["pwdrepeat"];
   $allergies = $_POST["allergies"];
@@ -15,7 +14,7 @@ if (isset($_POST["submit"])) {
   include 'signup.controler.inc.php';
   
   
- $signup = new SignupContr($email, $password, $pwdRepeat, $alergies, $convives);
+ $signup = new SignupContr($email, $password, $pwdRepeat, $allergies, $convives);
 
  $signup->signupUser();
 

@@ -6,7 +6,6 @@ class SignupContr extends Signup {
   private $email;
   private $password;
   private $pwdRepeat;
-  private $role;
   private $allergies;
   private $convives;
 

@@ -2,13 +2,12 @@
 
 class Signup extends dbh {
  
-  protected function setUser($email, $password) {
+  protected function setUser($email, $password, $allergies, $convives) {
     $stmt = $this->connect()->prepare('INSERT INTO users (userEmail, userPass, allergies, convives) VALUE (?, ?, ?, ?);');
     
     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-  if(!$stmt->execute(array($email, $hashedPwd
-  ))) {
+  if(!$stmt->execute(array($email, $hashedPwd, $allergies, $convives))) {
     $stmt = null;
     header("location: ../signup.php?error=stmtfailed");
     exit();
