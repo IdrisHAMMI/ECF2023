@@ -1,19 +1,21 @@
-.test {
-  width: 15%;
-  margin-top: 20px
-}
-
-.index_header {
-  padding-left: 100px;
-}
 
 .navbar {
   padding-top: 25px;
   padding-bottom: 25px;
+  padding-right: 5rem;
+  padding-left: 5rem;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
-.navbar-nav {
-  padding-right: 100px;
+.border-bottom {
+  border-bottom: 5px solid #707070 !important;
+}
+
+.nav {
+  padding-left: 0px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 button {
@@ -28,9 +30,4 @@ button {
 
 button:hover {
   background-color: rgba(0, 85, 243,0.8);
-}
-
-table {
-  width: 100%;
-  overflow-x: auto;
 }
