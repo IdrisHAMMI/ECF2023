@@ -38,8 +38,9 @@
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light ">
 <ul class="nav justify-content-center navbar-nav" style="padding-left: 0px;">
+      <li class="nav-item"><a href='index.php' class='nav-link'>Index&nbsp;&nbsp;</a></li>
       <li class="nav-item"><a href='#' class='nav-link'>Menu&nbsp;&nbsp;</a></li>
-      <li class="nav-item"><a href='#' class='nav-link'>Horaires d'ouverture&nbsp;&nbsp;&nbsp;</a></li>
+      <li class="nav-item"><a href='schedule.php' class='nav-link'>Horaires d'ouverture&nbsp;&nbsp;&nbsp;</a></li>
       <li class="nav-item"><a href='#' class='nav-link'>Notre Carte&nbsp;&nbsp;&nbsp;</a></li>
       <li class="nav-item"><a href='#' class='nav-link'>Réserver une Table&nbsp;&nbsp;&nbsp;</a></li>
     </ul>
