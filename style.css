@@ -18,6 +18,15 @@
   margin-right: auto;
 }
 
+#placeholder_img {
+  width: 60%;
+  margin: 10px auto;
+}
+
+.schedule_title {
+  text-align: center;
+}
+
 button {
   margin-bottom: 15px;
   padding: 9px 40px;
