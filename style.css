@@ -12,6 +12,10 @@
   border-bottom: 5px solid #707070 !important;
 }
 
+#food_img {
+  width: 100%;
+}
+
 .nav {
   padding-left: 0px;
   margin-left: auto;
