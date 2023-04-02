@@ -51,15 +51,15 @@
         <h1>Formulaire d'Ajout de photo de Gallerie</h1>
       </div>
       <div class="panel-body">
-        <form action="#" style="max-width: 300px; margin: auto;" method="post">
+        <form action="../includes/upload.inc.php" style="max-width: 300px; margin: auto;" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <div class="form-group">
-              <img src="../assets/placeholder_avatar.jpg" onclick="triggerClick()" id="food_img" alt="placeholder">
-            <label for="food_img">Ajouter votre image:</label>
-            <input type="file" name="food_img" onchange="displayImage(this)" id="food_img" class="form-control">
+              <img src="../assets/placeholder_avatar.jpg" onclick="triggerClick()" id="foodImg" />
+            <label for="foodImg">Ajouter votre image:</label>
+            <input type="file" name="foodImg" onchange="displayImage(this)" id="foodImg" class="form-control">
 </div>
-            <label for="gallery_img">Ajout de la description de <br> la Photo</label>
-            <textarea class="form-control" name="gallery_img" placeholder="gallery_img_comment">
+            <label for="gallery_bio">Ajout de la description de <br> la Photo</label>
+            <textarea class="form-control" name="gallery_bio" placeholder="Biographie de la Photo...">
           </textarea>
           </div>
             <br>
@@ -72,4 +72,6 @@
     </div>
 <script src="../scripts/displayTrigger.js"></script>
   </body>
+  <?php
+?>
 </html>

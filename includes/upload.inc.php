@@ -2,48 +2,29 @@
 
 session_start();
 
-$pdo = new PDO('mysql:host=localhost;dbname=backend_db', 'root', '');
 
-$id = $_SESSION['usersID'];
+$pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '',);
+
 
 if (isset($_POST['submit'])) {
-  $file = $_FILES['file'];
+  
+  $profileImgName = time() . '-' . $_FILES['foodImg']['name'];
+  $food_bio = $_POST['gallery_bio'];
 
-  $fileName = $file['name'];
-  $fileTmpName = $file['tmp_name'];
-  $fileSize = $file['size'];
-  $fileError = $file['error'];
-  $fileType = $file['type'];
+  $img_target = '../assets/added_content/' . $profileImgName;
 
-  $fileExt = explode('.', $fileName);
-  $fileActualExt = strtolower(end($fileExt));
+  if (move_uploaded_file($_FILES['foodImg']['tmp_name'], $img_target)) {
+    $sql = "INSERT INTO gallery (galleryImg, galleryBio) VALUES (:profileImgName, :food_bio)";
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute([
+        ':profileImgName' => $profileImgName,
+        ':food_bio' => $food_bio
+      ]);
 
-  $allowed = array('png, jpg');
-
-  if (in_array($fileActualExt, $allowed)) {
-    if ($fileError === 0) {
-      if ($fileSize < 10000000) {
-        $fileDestination = 'CV/';
-        if (!is_dir($fileDestination)) {
-          mkdir($fileDestination, 0777, true);
-        }
-        $fileDestination = $fileDestination.$fileName;
-        move_uploaded_file($fileTmpName, $fileDestination);
-        
-        $sql = "UPDATE users SET cvArray = :fileDestination WHERE usersID = :id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-          ':fileDestination' => $fileDestination,
-          ':id' => $id
-        ]);
-        header("Location: ../user_profile.php?error=uploadsuccessful");
-      } else {
-        echo "The file you are trying to upload is too big.";
-      }
-    } else {
-      echo "There was an error uploading your file.";
-    }
+    $alertMsg = "Img uploaded";  
+    $css_alert ="alert-success";
   } else {
-    echo "You cannot upload files of this type.";
+    $alertMsg = "Failed to upload Img";  
+    $css_alert ="alert-danger";
   }
 }

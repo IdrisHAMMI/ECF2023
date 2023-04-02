@@ -1,5 +1,5 @@
 function triggerClick() {
-  document.querySelector('#food_img').click();
+  document.querySelector('#foodImg').click();
 }
 
 function displayImage(e) {
@@ -7,7 +7,7 @@ function displayImage(e) {
     var reader = new FileReader();
 
     reader.onload = function(e) {
-      document.querySelector('#food_img').setAttribute('src', e.target.result);
+      document.querySelector('#foodImg').setAttribute('src', e.target.result);
     }
     reader.readAsDataURL(e.files[0]);
   }
