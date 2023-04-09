@@ -16,10 +16,11 @@
   <link rel="stylesheet" type="text/css" href="style.css"> 
   <title>Quai Antique | Index</title>
 </head>
-<body>
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url('assets/background_restaurant.jpg'); ;">
+
    <!--NAV BAR START-->
-  <nav class="navbar navbar-expand-lg navbar-light border-bottom">
-    <img src="assets/logo.png" style="width: 15%;margin-top: 10px;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="color: rgb(255, 255, 255);">
+    <img src="assets/website_logo2.png" style="width: 15%;margin-top: 10px;">
 
     <!--<button 
         class="navbar-toggler" 
@@ -44,6 +45,73 @@
       <li class="nav-item"><a href='#' class='nav-link'>Notre Carte&nbsp;&nbsp;&nbsp;</a></li>
       <li class="nav-item"><a href='#' class='nav-link'>Réserver une Table&nbsp;&nbsp;&nbsp;</a></li>
     </ul>
+</nav>
+<div class="container">
+  <img src="assets/index_welcome.png" class="mx-auto d-block index-welcome" alt="index-welcome">
+  <h3 id="welcome_footer"><i>Découvrez de nouvelles saveur au Quai Antique</i></h3>
+</div>
+<br>
+<div class="container mx-auto d-block" style="margin-bottom: 50px;">
+				<h1 id="schedule_header">Nos Horaires</h1>
+				<div class="opening_wrapper" >
 
+					<!-- Monday -->
+					<div class="row">
+						<div class="col-sm-6 text-white fw-200">Lundi</div>
+						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Uhr<br>18:00 - 23:30 Uhr
+          </div>
+
+					</div>
+					<hr>
+
+					<!-- Tuesday -->
+					<div class="row">
+						<div class="col-sm-6 text-white fw-200">Mardi</div>
+						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Uhr<br>18:00 - 23:30 Uhr</div>					
+            </div>
+					<hr>
+
+					<!-- Wednesday -->
+					<div class="row">
+						<div class="col-sm-6 text-white fw-200">Mercredi</div>
+						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Uhr<br>18:00 - 23:30 Uhr</div>					
+            </div>
+					<hr>
+
+					<!-- Thursday -->
+					<div class="row">
+						<div class="col-sm-6 text-white fw-200">Jeudi</div>
+						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Uhr<br>18:00 - 23:30 Uhr</div>
+          	</div>
+					<hr>
+
+					<!-- Friday -->
+					<div class="row">
+						<div class="col-sm-6 text-white fw-200">Vendredi</div>
+						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Uhr<br>18:00 - 23:30 Uhr</div>				
+          	</div>
+					<hr>
+
+					<!-- Saturday -->
+					<div class="row">
+						<div class="col-sm-6 text-white fw-200">Samedi</div>
+						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Uhr<br>18:00 - 23:30 Uhr</div>					
+          </div>
+					<hr>
+
+					<!-- Sunday -->
+					<div class="row">
+						<div class="col-sm-6 text-white fw-200">Dimanche</div>
+						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Uhr<br>18:00 - 23:30 Uhr</div>					
+          </div>
+    </div>
+			</div>
+  <section class="menu-section">
+    <div class="container">
+      <div class="title-section white-style">
+        <h1>Nos Repas</h1>
+      </div>
+    </div>
+    </section>
   </body>
 </html>
