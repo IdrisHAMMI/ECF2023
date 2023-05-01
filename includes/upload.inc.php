@@ -20,11 +20,8 @@ if (isset($_POST['submit'])) {
         ':profileImgName' => $profileImgName,
         ':food_bio' => $food_bio
       ]);
-
-    $alertMsg = "Img uploaded";  
-    $css_alert ="alert-success";
-  } else {
-    $alertMsg = "Failed to upload Img";  
-    $css_alert ="alert-danger";
+      
   }
+
+  
 }

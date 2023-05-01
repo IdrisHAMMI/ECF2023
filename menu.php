@@ -42,95 +42,34 @@
 <nav class="navbar navbar-expand-lg navbar-light ">
 <ul class="nav justify-content-center navbar-nav" style="padding-left: 0px;">
       <li class="nav-item"><a href='index.php' class='nav-link'>Index&nbsp;&nbsp;</a></li>
-      <li class="nav-item"><a href='menu.php' class='nav-link'>Menu&nbsp;&nbsp;</a></li>
+      <li class="nav-item"><a href='#' class='nav-link'>Menu&nbsp;&nbsp;</a></li>
       <li class="nav-item"><a href='#' class='nav-link'>Notre Carte&nbsp;&nbsp;&nbsp;</a></li>
       <li class="nav-item"><a href='#' class='nav-link'>Réserver une Table&nbsp;&nbsp;&nbsp;</a></li>
     </ul>
 </nav>
-<div class="container">
-  <img src="assets/index_welcome.png" class="mx-auto d-block index-welcome" alt="index-welcome">
-  <h3 id="welcome_footer"><i>Découvrez de nouvelles saveur au Quai Antique</i></h3>
-</div>
+
 <br>
 <div class="container mx-auto d-block" style="margin-bottom: 50px;">
-				<h1 id="schedule_header">Nos Horaires</h1>
-				<div class="opening_wrapper" >
-
-					<!-- Monday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Lundi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure
-          </div>
-
-					</div>
-					<hr>
-
-					<!-- Tuesday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Mardi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>					
-            </div>
-					<hr>
-
-					<!-- Wednesday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Mercredi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>					
-            </div>
-					<hr>
-
-					<!-- Thursday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Jeudi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>
-          	</div>
-					<hr>
-
-					<!-- Friday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Vendredi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>				
-          	</div>
-					<hr>
-
-					<!-- Saturday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Samedi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>					
-          </div>
-					<hr>
-
-					<!-- Sunday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Dimanche</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>					
-          </div>
-    </div>
-			</div>
-  <section class="menu-section">
-    <div class="container">
-      <div class="title-section white-style">
-        <h1 style="margin-bottom: 3.5rem;">Nos Repas</h1>
-          <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-            <?php 
-            $sql ="SELECT `galleryImg`, `galleryBio` FROM `gallery`;";
+				<h1 id="schedule_header">Nos Menus</h1>
+				<section class="menu-section">
+        <div class="container" >
+            <?php
+            $sql ="SELECT `menuTitle`,`menuSchedule`,`menuDescriptionPrice` FROM `menu`;";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             ?>
-              <img src="<?php echo "assets/added_content/".$row['galleryImg'];?>" class="card-img-top"width="200px"> 
-              <div class="menu-post-content">
-              <h4 style="color: white;"><?php echo $row['galleryBio']?> </h4>
-              </div>
+            <div class="menus" style="text-align: center;text-align: center; ">
+              <h3 class="menuTitle"><?php echo $row['menuTitle']?></h3>
+              <h3 class="menuSchedule"><i><?php echo $row['menuSchedule']?></i></h3>
+              <h3 class="menuDescriptionPrice" style="; margin-bottom: 100px;"><?php echo $row['menuDescriptionPrice']?></h3>
+            </div>
             <?php 
-            }
-            ?>
+            } 
             
-            </div>
-            </div>
-        </div>
-      </div>
+             ?>
+                 
     </div>
-    </section>
+</section>
   </body>
 </html>

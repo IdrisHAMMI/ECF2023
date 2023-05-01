@@ -44,43 +44,39 @@
       <li class="nav-item"><a href='#' class='nav-link'>See Clients Reservations DB&nbsp;&nbsp;&nbsp;</a></li>
     </ul>
 </nav>
-<div class="container text-center mt-5 border rounded">
-    <div class="row">
+<section>
+  <div class="container justify-content-center mt-5 border rounded">
+    <div>
       <div class="col-sm">
-      <div class="panel-heading text-center">
-        <h1>Formulaire d'Ajout de photo de Gallerie</h1>
+      <div class="panel-heading">
+        <h1 style="text-align: center;">Page d'Ajout/Modification d'Horaire</h1>
       </div>
-      <div class="panel-body">
-        <form action="../includes/upload.inc.php" style="max-width: 300px; margin: auto;" method="post" enctype="multipart/form-data">
+        <br>
+        <!--USER TABLE AUTH START-->
+        <form action="../includes/scheduleAdd.inc.php" method="post">
+        <h2 class="text-center">Horaire de la Semaine</h2>
+          <select name="days" id="days">
+            <option value="Lundi">Lundi</option>
+            <option value="Mardi">Mardi</option>
+            <option value="Mercredi">Mercredi</option>
+            <option value="Jeudi">Jeudi</option>
+            <option value="Vendredi">Vendredi</option>
+            <option value="Samedi">Samedi</option>
+            <option value="Dimanche">Dimanche</option>
+          </select>
+          <br>
+          <select name="time" id="time">
+            <option value="noon">Midi</option>
+            <option value="night">Soir</option>
+          </select>
+          <br>
           <div class="form-group">
-            <div class="form-group">
-              <img src="../assets/placeholder_avatar.jpg" onclick="triggerClick()" id="foodImg" />
-            <label for="foodImg">Ajouter votre image:</label>
-            <input type="file" name="foodImg" onchange="displayImage(this)" id="foodImg" class="form-control">
-</div>
-            <label for="gallery_bio">Ajout de la description de <br> la Photo</label>
-            <textarea class="form-control" name="gallery_bio" placeholder="Biographie de la Photo...">
-          </textarea>
+            <label for="schedule">Mettez l'horaire desirer...</label>
+            <input type="text" name="scheduleOpen" placeholder="Open" />
+            <input type="text" name="scheduleEnd" placeholder="End" />
           </div>
-            <br>
           <div class="submit-group">
             <button type="submit" name="submit">Ajouter</button>
           </form>
-          </div>
-      </div>
-      </div>
-    </div>
-<script src="../scripts/displayTrigger.js"></script>
   </body>
-  <?php
-if (isset($_GET["error"]))
-{
- if ($_GET["error"] == "none") {
-   echo "<p>Image mise dans la gallerie !</p>";
- }
- if ($_GET["error"] == "emptyinput") {
-   echo "<p>Ajouter votre image ou completer le titre !</p>";
- }
-}
-?>
 </html>

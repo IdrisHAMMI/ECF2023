@@ -13,5 +13,5 @@ if (isset($_POST["submit"])) {
 
   $login->loginUser();
 
-  header("location: ../con_success.php");
+  header("location: ../index.php");
 }

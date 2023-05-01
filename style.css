@@ -1,5 +1,4 @@
 body {
-  background-image: url("assets/background_restaurant.jpg");
   font-family: 'Raleway', sans-serif;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -68,7 +67,7 @@ hr {
 
 .menu-section {
   padding: 70px 0 100px;
-background: #111 url("assets/food_background.jpg") center center no-repeat;
+background: url("assets/food_background.jpg") center center no-repeat;
 }
 
 #foodImg {
@@ -88,6 +87,30 @@ background: #111 url("assets/food_background.jpg") center center no-repeat;
 
 .schedule_title {
   text-align: center;
+}
+
+section.popular-menu-section .menu-box .item .menu-post {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background: #2d2f31;
+}
+
+section.popular-menu-section .menu-box .item .menu-post .menu-post-content {
+  width: 50%;
+  float: right;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+}
+
+.menuTitle {
+  color: rgb(252, 186, 3)
+} 
+
+.menuSchedule, .menuDescriptionPrice {
+  color: white;
 }
 
 button {
