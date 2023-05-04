@@ -19,7 +19,7 @@
 <body>
   <section class="signup-form">
   <div class="text-center">
-    <img src="assets/logo.png" style="width: 15%;margin-top: 20px;">
+    <img src="assets/website_logo2.png" style="width: 15%;margin-top: 20px;">
   </div>
   <div class="container d-flex text-center justify-content-center border mt-5 rounded" >
     <div class="row">
@@ -46,21 +46,18 @@
           <?php
     if (isset($_GET["error"])) {
       if ($_GET["error"] == "emptyinput") {
-        echo "<p>Fill in all the fields!</p>";
+        echo "<p>Remplissez tous les champs !</p>";
       }
       if (isset($_GET["error"])) {
         if($_GET["error"] == "invalidemail") {
-          echo "<p>This Email already exists.</p>";
+          echo "<p>Cette E-mail existe deja.</p>";
         }
       }
       if ($_GET["error"] == "stmtfailed") {
         echo "<p>Statement failed. Debug the code and try again!</p>";
       }
       if($_GET["error"] == "wronglogin") {
-        echo "<p>This Email doesn't exist. Try again.</p>";
-      }
-      if($_GET['error'] == "userpending") {
-        echo "<p>Cette utilisateur doit étre autoriser a se connecter.<br> Veuillez patienter pendant que nos consultants confirme votre compte.</p>";
+        echo "<p>Cette Email n'existe pas. Essayer avec un autre Email.</p>";
       }
     }
   

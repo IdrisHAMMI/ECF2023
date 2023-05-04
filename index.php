@@ -24,7 +24,7 @@
   <nav class="navbar navbar-expand-lg navbar-light" style="color: rgb(255, 255, 255);">
     <img src="assets/website_logo2.png" style="width: 15%;margin-top: 10px;">
 
-    <!--<button 
+    <button 
         class="navbar-toggler" 
         type="button" 
         data-bs-toggle="collapse" 
@@ -34,9 +34,15 @@
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
-      </button>-->
+      </button>
     <ul class="navbar-nav ml-auto" style="padding-left: 0px;">
-      <li><a href='login.php' class='nav-link'>Se Connecter</a></li>
+    <?php
+           if(isset($_SESSION["userEmail"]) ) {
+            echo "<p>Bienvenue &nbsp;</p>" . $_SESSION['userEmail'];
+          } elseif (!isset($_SESSION["userEmail"]) ) {
+            echo "<li><a href='login.php' class='nav-link'>Se Connecter</a></li>";
+          }
+         ?>
     </ul>
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light ">
@@ -44,7 +50,7 @@
       <li class="nav-item"><a href='index.php' class='nav-link'>Index&nbsp;&nbsp;</a></li>
       <li class="nav-item"><a href='menu.php' class='nav-link'>Menu&nbsp;&nbsp;</a></li>
       <li class="nav-item"><a href='#' class='nav-link'>Notre Carte&nbsp;&nbsp;&nbsp;</a></li>
-      <li class="nav-item"><a href='#' class='nav-link'>Réserver une Table&nbsp;&nbsp;&nbsp;</a></li>
+      <li class="nav-item"><a id="myBtn" class='nav-link'>Réserver une Table"MODAL"&nbsp;&nbsp;&nbsp;</a></li>
     </ul>
 </nav>
 <div class="container">
@@ -56,55 +62,20 @@
 				<h1 id="schedule_header">Nos Horaires</h1>
 				<div class="opening_wrapper" >
 
+       
+       <?php $sql ="SELECT * FROM `schedule`;";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            ?>
 					<!-- Monday -->
 					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Lundi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure
+						<div class="col-sm-6 text-white fw-200"><?php echo $row['days']?></div>
+						<div class="col-sm-6 text-white fw-200"><?php echo $row['timeNoonOpening']?> - <?php echo $row['timeNoonEnd']?> Heure<br><?php echo $row['timeNightOpening']?> - <?php echo $row['timeNightEnd']?> Heure
           </div>
-
 					</div>
 					<hr>
-
-					<!-- Tuesday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Mardi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>					
-            </div>
-					<hr>
-
-					<!-- Wednesday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Mercredi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>					
-            </div>
-					<hr>
-
-					<!-- Thursday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Jeudi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>
-          	</div>
-					<hr>
-
-					<!-- Friday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Vendredi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>				
-          	</div>
-					<hr>
-
-					<!-- Saturday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Samedi</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>					
-          </div>
-					<hr>
-
-					<!-- Sunday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200">Dimanche</div>
-						<div class="col-sm-6 text-white fw-200">11:30 - 15:30 Heure<br>18:00 - 23:30 Heure</div>					
-          </div>
+         <?php }?>
     </div>
 			</div>
   <section class="menu-section">
@@ -112,6 +83,7 @@
       <div class="title-section white-style">
         <h1 style="margin-bottom: 3.5rem;">Nos Repas</h1>
           <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+            <ul>
             <?php 
             $sql ="SELECT `galleryImg`, `galleryBio` FROM `gallery`;";
             $stmt = $pdo->prepare($sql);
@@ -125,9 +97,44 @@
             <?php 
             }
             ?>
-            
+            </ul>
             </div>
             </div>
+            <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+  <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+</div>
         </div>
       </div>
     </div>

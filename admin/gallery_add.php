@@ -1,5 +1,7 @@
 <?php
   session_start();
+
+  include '../includes/errorHandling.php'
 ?>
 
 <!DOCTYPE html>
@@ -38,10 +40,10 @@
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light ">
 <ul class="nav justify-content-center navbar-nav" style="padding-left: 0px;">
-      <li class="nav-item"><a href='../index.php' class='nav-link'>Return to Index&nbsp;&nbsp;</a></li>
-      <li class="nav-item"><a href='gallery_add.php' class='nav-link'>Add Gallery Pic&nbsp;&nbsp;</a></li>
-      <li class="nav-item"><a href='add_menu.php' class='nav-link'>Add Menu&nbsp;&nbsp;&nbsp;</a></li>
-      <li class="nav-item"><a href='#' class='nav-link'>See Clients Reservations DB&nbsp;&nbsp;&nbsp;</a></li>
+      <li class="nav-item"><a style="color: black;" href='../index.php' class='nav-link'>Return to Index&nbsp;&nbsp;</a></li>
+      <li class="nav-item"><a style="color: black;" href='gallery_add.php' class='nav-link'>Add Gallery Pic&nbsp;&nbsp;</a></li>
+      <li class="nav-item"><a style="color: black;" href='add_menu.php' class='nav-link'>Add Menu&nbsp;&nbsp;&nbsp;</a></li>
+      <li class="nav-item"><a style="color: black;" href='#' class='nav-link'>See Clients Reservations DB&nbsp;&nbsp;&nbsp;</a></li>
     </ul>
 </nav>
 <div class="container text-center mt-5 border rounded">

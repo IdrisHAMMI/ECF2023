@@ -20,5 +20,5 @@ if (isset($_POST['submit'])) {
         ':menu_title' => $menuTitle,
         ':menu_schdedule' => $menuSchedule,
         ':menu_bio' => $menuTitle
-    ]);
+   ]);
 }

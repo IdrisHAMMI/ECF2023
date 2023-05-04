@@ -29,4 +29,5 @@
       ':scheduleEnd' => $scheduleEnd,
       ':weekDays' => $weekDays
   ]);
+  header('Location: ../admin/modify_timetable.php');
 }

@@ -36,7 +36,15 @@
         <span class="navbar-toggler-icon"></span>
       </button>-->
     <ul class="navbar-nav ml-auto" style="padding-left: 0px;">
-      <li><a href='login.php' class='nav-link'>Se Connecter</a></li>
+    
+    <?php
+           if(isset($_SESSION["userEmail"]) ) {
+            echo "<p>Bienvenue &nbsp;</p>" . $_SESSION['userEmail'];
+          } elseif (!isset($_SESSION["userEmail"]) ) {
+            echo "<li><a href='login.php' class='nav-link'>Se Connecter</a></li>";
+          }
+         ?>
+      
     </ul>
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light ">

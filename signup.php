@@ -19,7 +19,7 @@
 <body>
   <section>
   <div class="text-center">
-    <img src="assets/logo.png" style="width: 15%;margin-top: 20px;">
+    <img src="assets/website_logo2.png" style="width: 15%;margin-top: 20px;">
   </div>
   <div class="container text-center mt-5 border rounded">
     <div class="row">
@@ -43,30 +43,24 @@
           </div>
           <div class="form-group">
             <label for="allergies">Avez vous des allergies?</label>
-            <input type="text" class="form-control" name="allergies" placeholder="Avez vous des allergies?"/>
+            <textarea type="text" class="form-control" name="allergies" placeholder=""></textarea>
           </div>
           <div class="form-group">
             <label for="convives">Avez vous des convives?</label>
-          <input type="text" class="form-control" name="convives" placeholder="Avez vous des convives?"/>
+            <input type="text" class="form-control" name="convives" placeholder=""/>
           </div>
             </div>
             <br>
           <div class="submit-group">
             <button type="submit" name="submit">S'enregistrer</button>
-          </form>
-          </div>
-      </div>
-      </div>
-    </div>
-    
-    
-    <?php
+
+            <?php
   if (isset($_GET["error"])) {
     if ($_GET["error"] == "emptyinput") {
       echo "<p>Remplissez tous les champs !</p>";
     }
     if ($_GET["error"] == "invalidemail") {
-      echo "<p>Choisissez un e-mail valide !</p>";
+      echo "<p>Choisissez un Email valide !</p>";
     }
     if ($_GET["error"] == "passwordsdontmatch") {
       echo "<p>Les mots de passe doivent être les mêmes.</p>";
@@ -75,12 +69,20 @@
       echo "<p>Cette Email existe deja. Enregistrer vous avec une autre mail.</p>";
     }
       if ($_GET["error"] == "none") {
-      echo "<p>Merci de vous avoir inscrit! Notre consultant va verifier<br> votre inscription.</p>";
+      echo "<p>Merci de vous avoir inscrit !<br> Vous pouvez maintenant prendre une reservation dans notre restaurant.</p>";
     }
     
   }
 
 ?>
+          </form>
+          </div>
+      </div>
+      </div>
+    </div>
+    
+    
+
 </section>
 
     

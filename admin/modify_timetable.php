@@ -33,15 +33,15 @@
         <span class="navbar-toggler-icon"></span>
       </button>-->
     <ul class="navbar-nav ml-auto" style="padding-left: 0px;">
-      <li><a href='../login.php' class='nav-link'>Se Connecter</a></li>
+    <li><a style="color: black;" href='../login.php' class='nav-link'>Se Connecter</a></li>
     </ul>
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light ">
 <ul class="nav justify-content-center navbar-nav" style="padding-left: 0px;">
-      <li class="nav-item"><a href='../index.php' class='nav-link'>Return to Index&nbsp;&nbsp;</a></li>
-      <li class="nav-item"><a href='gallery_add.php' class='nav-link'>Add Gallery Pic&nbsp;&nbsp;</a></li>
-      <li class="nav-item"><a href='add_menu.php' class='nav-link'>Add Menu&nbsp;&nbsp;&nbsp;</a></li>
-      <li class="nav-item"><a href='#' class='nav-link'>See Clients Reservations DB&nbsp;&nbsp;&nbsp;</a></li>
+      <li class="nav-item" ><a style="color: black;" href='../index.php' class='nav-link'>Retourner a l'Index&nbsp;&nbsp;</a></li>
+      <li class="nav-item" ><a style="color: black;" href='gallery_add.php' class='nav-link'>Ajout d'image de gallerie&nbsp;&nbsp;</a></li>
+      <li class="nav-item" ><a style="color: black;" href='add_menu.php' class='nav-link'>Ajout de Menu&nbsp;&nbsp;&nbsp;</a></li>
+      <li class="nav-item" ><a style="color: black;" href='#' class='nav-link'>See Clients Reservations DB&nbsp;&nbsp;&nbsp;</a></li>
     </ul>
 </nav>
 <section>
@@ -72,8 +72,8 @@
           <br>
           <div class="form-group">
             <label for="schedule">Mettez l'horaire desirer...</label>
-            <input type="text" name="scheduleOpen" placeholder="Open" />
-            <input type="text" name="scheduleEnd" placeholder="End" />
+            <input type="text" name="scheduleOpen" placeholder="Debut D'horaire..." />
+            <input type="text" name="scheduleEnd" placeholder="Fin D'horaire..." />
           </div>
           <div class="submit-group">
             <button type="submit" name="submit">Ajouter</button>
