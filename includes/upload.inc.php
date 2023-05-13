@@ -20,6 +20,6 @@ if (isset($_POST['submit'])) {
         ':profileImgName' => $profileImgName,
         ':food_bio' => $food_bio
       ]);
-      
+
   }
 }
