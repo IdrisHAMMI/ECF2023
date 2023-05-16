@@ -1,7 +1,5 @@
 <?php
   session_start();
-
-  include '../includes/errorHandling.php'
 ?>
 
 <!DOCTYPE html>
@@ -60,9 +58,10 @@
               <img src="../assets/placeholder_avatar.jpg" onclick="triggerClick()" id="foodImg" />
             <label for="foodImg">Ajouter votre image:</label>
             <input type="file" name="foodImg" onchange="displayImage(this)" id="foodImg" class="form-control">
-</div>
+          </div>
+            <br>
             <label for="gallery_bio">Ajout de la description de <br> la Photo</label>
-            <textarea class="form-control" name="gallery_bio" placeholder="Biographie de la Photo...">
+            <input type="text" class="form-control" name="gallery_bio" placeholder="Biographie de la Photo...">
           </textarea>
           </div>
             <br>
@@ -81,9 +80,12 @@ if (isset($_GET["error"]))
  if ($_GET["error"] == "none") {
    echo "<p>Image mise dans la gallerie !</p>";
  }
- if ($_GET["error"] == "emptyinput") {
+ if ($_GET["error"] == "empty_input") {
    echo "<p>Ajouter votre image ou completer le titre !</p>";
  }
+ if ($_GET["error"] == "upload_failed") {
+  echo "<p>Il y a eu un probleme avec la mise en ligne<br>de l'image ou du texte.</p>";
+  }
 }
 ?>
 </html>

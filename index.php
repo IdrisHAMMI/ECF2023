@@ -74,7 +74,7 @@
 					<!-- Monday -->
 					<div class="row">
 						<div class="col-sm-6 text-white fw-200"><?php echo $row['days']?></div>
-						<div class="col-sm-6 text-white fw-200"><?php echo $row['timeNoonOpening']?> - <?php echo $row['timeNoonEnd']?> Heure<br><?php echo $row['timeNightOpening']?> - <?php echo $row['timeNightEnd']?> Heure
+						<div class="col-sm-6 text-white fw-200"><?php echo $row['timeNoonOpening']?> - <?php echo $row['timeNoonEnd']?><br><?php echo $row['timeNightOpening']?> - <?php echo $row['timeNightEnd']?>
           </div>
 					</div>
 					<hr>
@@ -143,30 +143,7 @@
                        </div>
                        <p>Horaire du Jour:</p>
                        <select id="my-select" name="hourInput">
-                      <?php 
-                      //$ouverture = strtotime('12:00'); // Heure d'ouverture du restaurant
-                      //$fermeture = strtotime('15:00'); // Heure de fermeture du restaurant
-                      
-                      //$pas = 15 * 60; // Pas de 15 minutes en secondes
-                      
-                     // for ($heure = $ouverture; $heure < $fermeture; $heure += $pas) {
-                       //   $heure_format = date('H:i', $heure);
-                         // echo "<option value='$heure_format'>$heure_format</option>";
-                      
-                      ?>
                       </select>
-                        <!--<select id="hourInput" name="hourInput">
-                        <option value="12:00">12:00</option>
-                        <option value="12:15">12:15</option>
-                        <option value="12:30">12:30</option>
-                        <option value="12:45">12:45</option>
-                        <option value="13:00">13:00</option>
-                        <option value="13:15">13:15</option>
-                        <option value="13:30">13:30</option>
-                        <option value="13:45">13:45</option>
-                        <option value="14:00">14:00</option>
-                      </select>-->
-                      
                       </div>
                      
                    <div class="modal-footer">
@@ -186,10 +163,12 @@
       </div>
     </div>
     <script>
+      //DATEPICKER API
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap5'
         });
 
+      //RESERVATION MESSAGE  
         $(document).ready(function() {
             $('#booking-form').submit(function(event) {
                 event.preventDefault();
@@ -204,18 +183,19 @@
             });
         });
 
+        // AVAILABLE SEATS FUNCTION
         $(document).ready(function() {
-    // Fonction pour mettre à jour la disponibilité des tables
-    function updateDispo() {
+    
+        function updateDispo() {
         
         var date = $('#dateInput').val();
         var heure = $('#hourInput').val();
-        var alergies = $('#platesClient').val();
+        var seats = $('#platesClient').val();
         
         $.ajax({
             type: 'POST',
             url: 'reservation.php',
-            data: { bookingDate: date, bookingTime: heure, platesClient: alergies },
+            data: { bookingDate: date, bookingTime: heure, platesClient: seats },
             dataType: 'json',
             success: function(response) {
               alert(date);
@@ -315,7 +295,6 @@ $(document).ready(function() {
   });
 });
     </script>
-    
     </section>
   </body>
 </html>

@@ -78,6 +78,19 @@
           </div>
           <div class="submit-group">
             <button type="submit" name="submit">Ajouter</button>
+            <?php
+        if (isset($_GET["error"])) {
+          if ($_GET["error"] == "empty_input") {
+            echo "<p>Selectionner et remplissez tous les champs !</p>";
+          }
+          if ($_GET["error"] == "none") {
+            echo "<p>Horaire mise en ligne et mise a jour !</p>";
+          }
+          if ($_GET["error"] == "upload_failed") {
+            echo "<p>Il y a eu un probleme avec la mise en ligne<br>des horaires.</p>";
+          }
+        }  
+        ?>
           </form>
   </body>
 </html>

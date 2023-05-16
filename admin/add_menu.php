@@ -75,6 +75,16 @@
 <script src="../scripts/displayTrigger.js"></script>
   </body>
   <?php
-
+if (isset($_GET["error"])) {
+  if ($_GET["error"] == "empty_input") {
+    echo "<p>Remplissez tous les champs !</p>";
+  }
+  if ($_GET["error"] == "none") {
+    echo "<p>Menu mise en ligne !</p>";
+  }
+  if ($_GET["error"] == "upload_failed") {
+    echo "<p>Il y a eu un probleme avec la mise en ligne<br>du Menu.</p>";
+  }
+}  
 ?>
 </html>
