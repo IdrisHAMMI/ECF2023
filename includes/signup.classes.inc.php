@@ -1,9 +1,10 @@
 <?php
 
+//CLASS OBJECT SIGNUP FUNCTION
 class Signup extends dbh {
  
   protected function setUser($email, $password, $allergies, $convives) {
-    $stmt = $this->connect()->prepare('INSERT INTO users (userEmail, userPass, allergies, convives) VALUE (?, ?, ?, ?);');
+    $stmt = $this->connect()->prepare('INSERT INTO users (userEmail, userPass, role_id, allergies, convives) VALUE (?, ?, 1, ?, ?);');
     
     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 

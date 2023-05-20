@@ -6,7 +6,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '');
 $jour = $_POST['jour'];
 
 
-$sql = "SELECT timeNoonOpening, timeNoonEnd FROM schedule WHERE days= :jour";
+$sql = "SELECT timeNightOpening, timeNightEnd FROM schedule WHERE days= :jour";
 $requete = $pdo->prepare($sql);
 $requete->bindParam(':jour', $jour);
 $requete->execute();
@@ -15,8 +15,8 @@ $requete->execute();
 
 $row = $requete->fetch(PDO::FETCH_ASSOC);
 
-$heureDebut = $row['timeNoonOpening'];
-$heureFin = $row['timeNoonEnd'];
+$heureDebut = $row['timeNightOpening'];
+$heureFin = $row['timeNightEnd'];
 
 
 

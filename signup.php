@@ -19,7 +19,9 @@
 <body>
   <section>
   <div class="text-center">
+  <a href="index.php">
     <img src="assets/website_logo2.png" style="width: 15%;margin-top: 20px;">
+  </a>
   </div>
   <div class="container text-center mt-5 border rounded">
     <div class="row">
@@ -55,25 +57,23 @@
             <button type="submit" name="submit">S'enregistrer</button>
 
             <?php
-  if (isset($_GET["error"])) {
-    if ($_GET["error"] == "emptyinput") {
-      echo "<p>Remplissez tous les champs !</p>";
-    }
-    if ($_GET["error"] == "invalidemail") {
-      echo "<p>Choisissez un Email valide !</p>";
-    }
-    if ($_GET["error"] == "passwordsdontmatch") {
-      echo "<p>Les mots de passe doivent être les mêmes.</p>";
-    }
-     if ($_GET["error"] == "userexists") {
-      echo "<p>Cette Email existe deja. Enregistrer vous avec une autre mail.</p>";
-    }
-      if ($_GET["error"] == "none") {
-      echo "<p>Merci de vous avoir inscrit !<br> Vous pouvez maintenant prendre une reservation dans notre restaurant.</p>";
-    }
-    
+if (isset($_GET["error"])) {
+  if ($_GET["error"] == "emptyinput") {
+    echo "<p>Remplissez tous les champs !</p>";
   }
-
+  if ($_GET["error"] == "invalidemail") {
+    echo "<p>Choisissez un Email valide !</p>";
+  }
+  if ($_GET["error"] == "passwordsdontmatch") {
+    echo "<p>Les mots de passe doivent être les mêmes.</p>";
+  }
+  if ($_GET["error"] == "userexists") {
+    echo "<p>Cette Email existe deja. Enregistrer vous avec une autre mail.</p>";
+  }
+  if ($_GET["error"] == "none") {
+    echo "<p>Merci de vous avoir inscrit !<br> Vous pouvez maintenant prendre une reservation dans notre restaurant.<br><a href=\"index.php\">Retourner vers l'index.</a></p>";
+  }
+}
 ?>
           </form>
           </div>

@@ -19,19 +19,7 @@
 <body>
    <!--NAV BAR START-->
   <nav class="navbar navbar-expand-lg navbar-light border-bottom">
-    <img src="../assets/website_logo2.png" style="width: 15%;margin-top: 10px;margin-left: auto;margin-right: auto;">
-
-    <!--<button 
-        class="navbar-toggler" 
-        type="button" 
-        data-bs-toggle="collapse" 
-        data-bs-target="#toggleMobileMenu" 
-        aria-controls="toggleMobileMenu" 
-        aria-expanded="false" 
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>-->
+    <img src="../assets/website_logo2.png" style="width: 250px;margin-top: 20px;">
     <ul class="navbar-nav ml-auto" style="padding-left: 0px;">
       <li><a href='../login.php' class='nav-link'>Se Connecter</a></li>
     </ul>
@@ -42,7 +30,6 @@
       <li class="nav-item" ><a style="color: black;" href='gallery_add.php' class='nav-link'>Ajout d'image de gallerie&nbsp;&nbsp;</a></li>
       <li class="nav-item" ><a style="color: black;" href='add_menu.php' class='nav-link'>Ajout de Menu&nbsp;&nbsp;&nbsp;</a></li>
       <li class="nav-item" ><a style="color: black;" href='modify_timetable.php' class='nav-link'>Modifier les Horaires du Rest.&nbsp;&nbsp;&nbsp;</a></li>
-      <li class="nav-item" ><a style="color: black;" href='#' class='nav-link'>See Clients Reservations DB&nbsp;&nbsp;&nbsp;</a></li>
     </ul>
 </nav>
 <div class="container text-center mt-5 border rounded">
@@ -74,6 +61,7 @@
     </div>
 <script src="../scripts/displayTrigger.js"></script>
   </body>
+  <!--ERROR HANDLING-->
   <?php
 if (isset($_GET["error"]))
 {

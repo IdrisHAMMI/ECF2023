@@ -1,6 +1,6 @@
 <?php 
 
-//Signup Controler
+//SIGNUP CONTROLER
 class SignupContr extends Signup {
 
   private $email;

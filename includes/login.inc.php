@@ -1,5 +1,6 @@
 <?php
 
+//ON SUBMIT SEND DATA QUERY FROM DB, LOGIN CONTROLER & LOGIN CLASSES THEN REDIRECT USER TO INDEX
 if (isset($_POST["submit"])) {
 
   $email = $_POST["email"];

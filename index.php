@@ -16,6 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="style.css"> 
     <title>Quai Antique | Index</title>
 </head>
@@ -23,23 +24,15 @@
 
    <!--NAV BAR START-->
   <nav class="navbar navbar-expand-lg navbar-light" style="color: rgb(255, 255, 255);">
-    <img src="assets/website_logo2.png" style="width: 15%;margin-top: 10px;">
+  <a href="index.php">
+    <img src="assets/website_logo2.png" style="width: 250px;margin-top: 20px;" class="img-fluid">
+  </a>
 
-    <button 
-        class="navbar-toggler" 
-        type="button" 
-        data-bs-toggle="collapse" 
-        data-bs-target="#toggleMobileMenu" 
-        aria-controls="toggleMobileMenu" 
-        aria-expanded="false" 
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
     <ul class="navbar-nav ms-auto" style="padding-left: 0px;">
     <?php
            if(isset($_SESSION["userEmail"]) ) {
-            echo "<p>Bienvenue &nbsp;</p>" . $_SESSION['userEmail'];
+            echo $_SESSION['userEmail'];
+            echo "<li class='nav-item active'><a href='includes/logout.inc.php' class='nav-link'>Se Déconecter </a></li>";
           } elseif (!isset($_SESSION["userEmail"]) ) {
             echo "<li><a href='login.php' class='nav-link'>Se Connecter</a></li>";
           }
@@ -54,55 +47,44 @@
 <ul class="nav justify-content-center navbar-nav" style="padding-left: 0px;">
       <li class="nav-item"><a href='index.php' class='nav-link'>Index&nbsp;&nbsp;</a></li>
       <li class="nav-item"><a href='menu.php' class='nav-link'>Menu&nbsp;&nbsp;</a></li>
-      <li class="nav-item"><a href="../src/admin/gallery_add.php" class='nav-link'>ADMIN</a></li>
-    </ul>
+      <?php 
+      if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == '2') {
+        echo "<li class='nav-item'><a href='../src/admin/gallery_add.php' class='nav-link'>Modifier le Site</a></li>";
+      } 
+      ?>
+      </ul>
 </nav>
+<!--NAV BAR END-->
 <div class="container">
-  <img src="assets/index_welcome.png" class="mx-auto d-block index-welcome" alt="index-welcome">
+  <img src="assets/index_welcome.png" class="mx-auto d-block index-welcome img-fluid" alt="index-welcome">
   <h3 id="welcome_footer"><i>Découvrez de nouvelles saveur au Quai Antique</i></h3>
 </div>
 <br>
-<div class="container mx-auto d-block" style="margin-bottom: 50px;">
-				<h1 id="schedule_header">Nos Horaires</h1>
-				<div class="opening_wrapper" >
-        <?php 
-            $sql ="SELECT * FROM `schedule`;";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            ?>
-					<!-- Monday -->
-					<div class="row">
-						<div class="col-sm-6 text-white fw-200"><?php echo $row['days']?></div>
-						<div class="col-sm-6 text-white fw-200"><?php echo $row['timeNoonOpening']?> - <?php echo $row['timeNoonEnd']?><br><?php echo $row['timeNightOpening']?> - <?php echo $row['timeNightEnd']?>
+
+        <section class="menu-section">
+        <div class="container">
+        <div class="title-section white-style">
+          <h1 style="margin-bottom: 3.5rem;">Nos Repas</h1>
+        </div>
+        <div class="row" style="text-align: center;">
+          <?php 
+          $sql = "SELECT `galleryImg`, `galleryBio` FROM `gallery`;";
+          $stmt = $pdo->prepare($sql);
+          $stmt->execute();
+          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+          ?>
+          <div class="col-md-4">
+            <img src="<?php echo "assets/added_content/".$row['galleryImg']; ?>" class="img-fluid" width="200px">
+            <div class="menu-post-content">
+              <h4 style="color: white;"><?php echo $row['galleryBio']; ?></h4>
+            </div>
           </div>
-					</div>
-					<hr>
-         <?php }?>
-    </div>
-			</div>
-  <section class="menu-section">
-    <div class="container">
-      <div class="title-section white-style">
-        <h1 style="margin-bottom: 3.5rem;">Nos Repas</h1>
-          <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-            <ul>
-            <?php 
-            $sql ="SELECT `galleryImg`, `galleryBio` FROM `gallery`;";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            ?>
-              <img src="<?php echo "assets/added_content/".$row['galleryImg'];?>" class="card-img-top"width="200px"> 
-              <div class="menu-post-content">
-              <h4 style="color: white;"><?php echo $row['galleryBio']?> </h4>
-              </div>
-            <?php 
-            }
-            ?>
-            </ul>
-            </div>
-            </div>
+          <?php 
+          }
+             ?>
+         </div>
+        </div>
+
             <!--MODAL-->
              <div class="modal fade" id="booking-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog" role="document">
@@ -132,28 +114,30 @@
                       <div class="col-6">
                       <div class="form-floating">
                       <select class="form-select" name="platesClient" id="platesClient">
-                        <option value="1">1 Couvert</option>
-                        <option value="2">2 Couverts</option>
-                        <option value="3">3 Couverts</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                       </select>
-                      
                       <label for="plates">Couverts</label>
                       <br>
+                      <input type="radio" name="periode" value="jour" checked> Jour
+                      <br>
+                      <input type="radio" name="periode" value="soir"> Soir
                         </div>
                        </div>
                        <p>Horaire du Jour:</p>
-                       <select id="my-select" name="hourInput">
+                       <select id="hourInput" class="form-select" name="hourInput">
+                      </select>
+                      <br>
+                      <p>Horaire du Soir:</p>
+                       <select id="hourInputNight" class="form-select" name="hourInputNight">
                       </select>
                       </div>
-                     
                    <div class="modal-footer">
                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                      <button type="submit" name="submit" class="btn btn-primary">Reserver</button>
                    </div>
                    </form>
-                   <div id="disponibilite-message">
-  
-                    <p>Disponibilite: </p>
                     </div>
                  </div>
                </div>
@@ -162,139 +146,27 @@
         </div>
       </div>
     </div>
-    <script>
-      //DATEPICKER API
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap5'
-        });
-
-      //RESERVATION MESSAGE  
-        $(document).ready(function() {
-            $('#booking-form').submit(function(event) {
-                event.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: 'index.php',
-                    data: $(this).serialize(),
-                    success: function(response) {
-                        $('#reservation-message').html(response);
-                    }
-                });
-            });
-        });
-
-        // AVAILABLE SEATS FUNCTION
-        $(document).ready(function() {
-    
-        function updateDispo() {
-        
-        var date = $('#dateInput').val();
-        var heure = $('#hourInput').val();
-        var seats = $('#platesClient').val();
-        
-        $.ajax({
-            type: 'POST',
-            url: 'reservation.php',
-            data: { bookingDate: date, bookingTime: heure, platesClient: seats },
-            dataType: 'json',
-            success: function(response) {
-              alert(date);
-              $('#dispo-message').html('Success');
-            }
-        });
-    }
-
-    // Appel de la fonction pour la première fois
-    $('#reservation-form').submit(function(event) {
-    updateDispo();
-    });
-    // Mise à jour de la disponibilité des tables en temps réel
-    $('#date, #heure').on('change', function() {
-        updateDispo();
-    });
-});
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#my-form').submit(function(event) {
-                event.preventDefault();
-                var formData = $(this).serialize();
-                $.ajax({
-                    type: 'POST',
-                    url: 'reservation.php',
-                    data: formData,
-                    success: function(response) {
-                        // Faites quelque chose avec la réponse du serveur
-                        $('#dispo-message').html(response);
-                    }
-                });
-            });
-        });
-
-        $(document).ready(function() {
-  $('#dateInput, #hourInput').change(function() {
-    var date = $('#dateInput').val();
-    var heure = $('#hourInput').val();
-
-    // Vérification des champs non vides
-    if (date !== '' && heure !== '') {
-      var formData = {
-        date: date,
-        heure: heure
-      };
-
-      $.ajax({
-        type: 'POST',
-        url: 'verif.php',
-        data: formData,
-        success: function(response) {
-          $('#disponibilite-message').text(response);
-        }
-      });
-    }
-  });
-});
-
-
-$(document).ready(function() {
-  function detectJour(jour) {
-        
-        var jour = jour;
-
-        $.ajax({
-            type: 'POST',
-            url: 'dateHeure.php',
-            data: { jour: jour },
-            dataType: 'json',
-            success: function(response) {
-          var options = JSON.parse(response);
-          var select = $('#my-select');
-
-          // Effacer les options existantes
-          select.empty();
-
-          // Ajouter les nouvelles options
-          options.forEach(function(option) {
-            select.append('<option value="' + option.value + '">' + option.label + '</option>');
-          });
-        }
-        });
-    }
-
-  $('#dateInput').change(function() {
-    var date = $('#dateInput').val();
-
-    $.ajax({
-      type: 'POST',
-      url: 'jour_semaine.php',
-      data: { date: date },
-      success: function(response) {
-        detectJour(response);
-      }
-    });
-  });
-});
-    </script>
+    <script src="scripts/modalReserve.js"></script>
+    <!--MODAL END-->
     </section>
+    <footer>
+  <div class="content-footer">
+    <h3>Horaires du restaurant</h3>
+    <!--SCHEDULE QUERY-->
+    <?php 
+      $sql ="SELECT * FROM `schedule`;";
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute();
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    ?>
+    <div class="row">
+      <div class="col-sm-6 fw-200"><?php echo $row['days']?></div>
+      <div class="col-sm-6 fw-200"><?php echo $row['timeNoonOpening']?> - <?php echo $row['timeNoonEnd']?><br><?php echo $row['timeNightOpening']?> - <?php echo $row['timeNightEnd']?></div>
+    </div>
+    <?php }?>
+  </div>
+  <br>
+  <p id="footer-copyright"><i>©Copyright Quai Antique 2023  All rights reserved.</i></p>
+</footer>
   </body>
 </html>

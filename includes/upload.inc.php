@@ -2,7 +2,6 @@
 
 session_start();
 
-
 $pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '',);
 
 
@@ -14,9 +13,12 @@ if (isset($_POST['submit'])) {
     exit();
   }
 
+  //VARIABLE GETS IMG FROM FORM IMG HTML FILE TYPE
   $profileImgName = time() . '-' . $_FILES['foodImg']['name'];
+  //VARIABLE GETS STRING DATA FROM FORM
   $food_bio = $_POST['gallery_bio'];
 
+  //VARIABLE GETS PREVIOUS DATA FROM profileImgName AND REDIRECTS IT TO THE WANTED FILE TARGET
   $img_target = '../assets/added_content/' . $profileImgName;
 
   if (move_uploaded_file($_FILES['foodImg']['tmp_name'], $img_target)) {
@@ -28,7 +30,8 @@ if (isset($_POST['submit'])) {
       ]);
     
   }
-
+  
+//ERROR HANDLING
   header("Location: ../admin/gallery_add.php?error=none");
     exit();
   } else {

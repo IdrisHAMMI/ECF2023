@@ -1,5 +1,6 @@
 <?php
 
+//LOGIN CONTROLER FUNCTION
 class LoginContr extends Login {
 
   private $email;

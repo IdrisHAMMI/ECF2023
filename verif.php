@@ -16,6 +16,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $nb_tables_dispo = $row['bookingLimit'];
 
 // Envoi de la réponse en JSON
-$response = array('bookingLimit' => $nb_tables_dispo);
+$response = 'Disponibilite:' . 3 - $nb_tables_dispo;
 echo json_encode($response);
 ?>

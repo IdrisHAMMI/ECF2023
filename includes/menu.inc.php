@@ -5,7 +5,8 @@ session_start();
 
 $pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '',);
 
-
+//ON SUBMIT: CHECKS IF THE FORM IS EMPTY, IF YES THEN START ERROR HANDLING
+//START QUERY AND INSERT FORM POST DATA TO DB
 if (isset($_POST['submit'])) {
 
   if (empty($_POST['menu_title']) || empty($_POST['menu_schedule']) || empty($_POST['menu_bio'])) {

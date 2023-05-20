@@ -1,5 +1,5 @@
 <?php
-
+//DB CONNECTION PDO
 class dbh {
 
   private $servername;
