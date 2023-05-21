@@ -1,3 +1,6 @@
-INSERT INTO `roles` (`roleId`, `role`) VALUES
-(1, 'clients (users)'),
-(2, 'employes (admin)');
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `roleId` int(11) NOT NULL AUTO_INCREMENT,
+  `role` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`roleId`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
