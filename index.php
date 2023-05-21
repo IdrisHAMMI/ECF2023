@@ -34,12 +34,15 @@
             echo $_SESSION['userEmail'];
             echo "<li class='nav-item active'><a href='includes/logout.inc.php' class='nav-link'>Se Déconecter </a></li>";
           } elseif (!isset($_SESSION["userEmail"]) ) {
-            echo "<li><a href='login.php' class='nav-link'>Se Connecter</a></li>";
+            echo "<li><a href='login.php' class='nav-link loginLink'>Se Connecter</a></li>";
           }
          ?>
-   <button type="button" class="btn btn-primary" style="margin-bottom: 0px;" data-bs-toggle="modal" data-bs-target="#booking-modal">
-               Réserver maintenant
-             </button>  
+         <?php 
+        if(isset($_SESSION['userEmail'])) {
+          echo '<button type="button" class="btn btn-primary modal_button" style="margin-bottom: 0px;" data-bs-toggle="modal" data-bs-target="#booking-modal">Réserver maintenant</button>';
+        }
+        ?>
+             
             </ul>
 
 </nav>

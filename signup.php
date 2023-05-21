@@ -20,7 +20,7 @@
   <section>
   <div class="text-center">
   <a href="index.php">
-    <img src="assets/website_logo2.png" style="width: 15%;margin-top: 20px;">
+    <img src="assets/website_logo2.png" style="width: 250px;margin-top: 20px;">
   </a>
   </div>
   <div class="container text-center mt-5 border rounded">
@@ -64,7 +64,7 @@ if (isset($_GET["error"])) {
   if ($_GET["error"] == "invalidemail") {
     echo "<p>Choisissez un Email valide !</p>";
   }
-  if ($_GET["error"] == "passwordsdontmatch") {
+  if ($_GET["error"] == "pwdnotmatched") {
     echo "<p>Les mots de passe doivent être les mêmes.</p>";
   }
   if ($_GET["error"] == "userexists") {

@@ -20,7 +20,7 @@
   <section class="signup-form">
   <div class="text-center">
   <a href="index.php">
-    <img src="assets/website_logo2.png" style="width: 15%;margin-top: 20px;">
+    <img src="assets/website_logo2.png" style="width: 250px;margin-top: 20px;">
   </a>
   </div>
   <div class="container d-flex text-center justify-content-center border mt-5 rounded" >

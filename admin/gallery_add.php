@@ -20,8 +20,8 @@
    <!--NAV BAR START-->
   <nav class="navbar navbar-expand-lg navbar-light border-bottom">
     <img src="../assets/website_logo2.png" style="width: 250px;margin-top: 20px;">
-    <ul class="navbar-nav ml-auto" style="padding-left: 0px;">
-      <li><a href='../login.php' class='nav-link'>Se Connecter</a></li>
+    <ul class="navbar-nav ml-auto" style="padding-left: 0px;margin-left: auto;">
+    <li><a style="color: black;" href='../login.php' class='nav-link'>Se Connecter</a></li>
     </ul>
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light ">
