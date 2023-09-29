@@ -1,5 +1,6 @@
 <?php
-  $pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '');
+    $pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '');
+  //$pdo = new PDO('mysql:host=localhost;dbname=id20788719_restaurant', 'id20788719_root', 'Travis00756&');
   session_start();
 ?>
 
@@ -30,12 +31,12 @@
 
     <ul class="navbar-nav ms-auto" style="padding-left: 0px;">
     <?php
-           if(isset($_SESSION["userEmail"]) ) {
-            echo $_SESSION['userEmail'];
-            echo "<li class='nav-item active'><a href='includes/logout.inc.php' class='nav-link'>Se Déconecter </a></li>";
-          } elseif (!isset($_SESSION["userEmail"]) ) {
-            echo "<li><a href='login.php' class='nav-link loginLink'>Se Connecter</a></li>";
-          }
+          if (isset($_SESSION["userEmail"])) {
+    echo "<p style=\"margin-bottom: 0px; margin-top: 8px;\">". $_SESSION['userEmail'] ."</p>";
+    echo "<li class='nav-item active'><a href='includes/logout.inc.php' class='nav-link'>Se Déconnecter</a></li>";
+} elseif (!isset($_SESSION["userEmail"])) {
+    echo "<li><a href='login.php' class='nav-link loginLink'>Se Connecter</a></li>";
+}
          ?>
          <?php 
         if(isset($_SESSION['userEmail'])) {
