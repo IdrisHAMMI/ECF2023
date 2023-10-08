@@ -11,16 +11,16 @@
     
     var date = $('#dateInput').val();
     if(($('#hourInput').val()) == '') {
-      var heure = $('#hourInputNight').val();
+      var hour = $('#hourInputNight').val();
     } else {
-      var heure = $('#hourInput').val();
+      var hour = $('#hourInput').val();
     }
     var seats = $('#platesClient').val();
     
     $.ajax({
         type: 'POST',
-        url: 'reservation.php',
-        data: { bookingDate: date, bookingTime: heure, platesClient: seats },
+        url: 'booking.php',
+        data: { bookingDate: date, bookingTime: hour, platesClient: seats },
         dataType: 'json',
         success: function(response) {
           $('#dispo-message').html('Success');
@@ -44,7 +44,7 @@ $('#date, #heure').on('change', function() {
             var formData = $(this).serialize();
             $.ajax({
                 type: 'POST',
-                url: 'reservation.php',
+                url: 'booking.php',
                 data: formData,
                 success: function(response) {
                     // SERVER RESPONSE
@@ -58,17 +58,17 @@ $('#date, #heure').on('change', function() {
 $('#hourInput').change(function() {
     
 var date = $('#dateInput').val();
-var heure = $('#hourInput').val();
+var hour = $('#hourInput').val();
 // CHECKING FOR NON-EMPTY FIELDS
-if (date !== '' && heure !== '') {
+if (date !== '' && hour !== '') {
   var formData = {
     date: date,
-    heure: heure
+    hour: hour
   };
 
   $.ajax({
     type: 'POST',
-    url: 'verif.php',
+    url: 'tableCheck.php',
     data: formData,
     success: function(response) {
       $('#disponibilite-message').text(response);
@@ -81,17 +81,17 @@ if (date !== '' && heure !== '') {
 $(document).ready(function() {
 $('#hourInputNight').change(function() {
 var date = $('#dateInput').val();
-var heure = $('#hourInputNight').val();
+var hour = $('#hourInputNight').val();
 // 
-if (date !== '' && heure !== '') {
+if (date !== '' && hour !== '') {
   var formData = {
     date: date,
-    heure: heure
+    hour: hour
   };
 
   $.ajax({
     type: 'POST',
-    url: 'verif.php',
+    url: 'tableCheck.php',
     data: formData,
     success: function(response) {
       $('#disponibilite-message').text(response);
@@ -108,7 +108,7 @@ function detectJour(jour) {
 
     $.ajax({
         type: 'POST',
-        url: 'dateHeure.php',
+        url: 'dateHourDay.php',
         data: { jour: jour },
         dataType: 'json',
         success: function(response) {
@@ -130,7 +130,7 @@ function detectSoir(jour) {
 
     $.ajax({
         type: 'POST',
-        url: 'dateHeureNight.php',
+        url: 'dateHourNight.php',
         data: { jour: jour },
         dataType: 'json',
         success: function(response) {
@@ -149,7 +149,7 @@ var date = $('#dateInput').val();
 
 $.ajax({
   type: 'POST',
-  url: 'jour_semaine.php',
+  url: 'days.php',
   data: { date: date },
   success: function(response) {
     
@@ -160,18 +160,32 @@ $.ajax({
   });
 });
 
-$(document).ready(function() {
-// RADIO BUTTON HANDLING
-$('input[name="periode"]').change(function() {
-var selectedValue = $(this).val();
+javascript
 
-// DISABLE SELECT HTML ELEMENT BY WHICH RADIO HAS BEEN PRESSED
-if (selectedValue === 'jour') {
-  $('#hourInput').prop('disabled', false);
-  $('#hourInputNight').prop('disabled', true);
-} else if (selectedValue === 'soir') {
-  $('#hourInput').prop('disabled', true);
-  $('#hourInputNight').prop('disabled', false);
+$(document).ready(function() {
+
+  function handleRadioChange() {
+    var selectedValue = $('input[name="periode"]:checked').val();
+
+    // ENABLE/DISABLE SELECT HTML ELEMENT BASED ON THE SELECTED RADIO BUTTON
+    if (selectedValue === 'jour') {
+      $('#hourInput').prop('disabled', false);
+      $('#hourInputNight').prop('disabled', true);
+    } else if (selectedValue === 'soir') {
+      $('#hourInput').prop('disabled', true);
+      $('#hourInputNight').prop('disabled', false);
     }
+  }
+
+  $('#hourInput').prop('disabled', true);
+  $('#hourInputNight').prop('disabled', true);
+
+
+  $('#booking-modal').on('shown.bs.modal', function() {
+    $('input[name="periode"]').change(handleRadioChange);
+  });
+
+  $('#booking-modal').on('hidden.bs.modal', function() {
+    $('input[name="periode"]').off('change', handleRadioChange);
   });
 });

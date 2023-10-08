@@ -30,11 +30,11 @@
     <ul class="navbar-nav ml-auto" style="padding-left: 0px;margin-left: auto;">
     
     <?php
-           if(isset($_SESSION["userEmail"]) ) {
-            echo $_SESSION['userEmail'];
-            echo "<li class='nav-item active'><a href='includes/logout.inc.php' class='nav-link'>Se Déconecter </a></li>";
-          } elseif (!isset($_SESSION["userEmail"]) ) {
-            echo "<li><a href='login.php' class='nav-link'>Se Connecter</a></li>";
+            if (isset($_SESSION["userEmail"])) {
+              echo "<p style=\"margin-bottom: 0px; margin-top: 8px;\">". $_SESSION['userEmail'] ."</p>";
+              echo "<li class='nav-item active'><a href='includes/logout.inc.php' class='nav-link'>Se Déconnecter</a></li>";
+          } elseif (!isset($_SESSION["userEmail"])) {
+              echo "<li><a href='login.php' class='nav-link loginLink'>Se Connecter</a></li>";
           }
          ?>
          <button type="button" class="btn btn-primary" style="margin-bottom: 0px;" data-bs-toggle="modal" data-bs-target="#booking-modal">
