@@ -144,48 +144,41 @@ function detectSoir(jour) {
     }
     });
 }
-$('#dateInput').change(function() {
-var date = $('#dateInput').val();
 
-$.ajax({
-  type: 'POST',
-  url: 'days.php',
-  data: { date: date },
-  success: function(response) {
-    
-    detectJour(response);
-    detectSoir(response);
+$('#dateInput').change(function() {
+  // Clear existing options
+  $('#hourInput').empty();
+  $('#hourInputNight').empty();
+  var date = $('#dateInput').val();
+
+  $.ajax({
+    type: 'POST',
+    url: 'days.php',
+    data: { date: date },
+    success: function(response) {
+      detectJour(response);
+      detectSoir(response);
   }
     });
   });
 });
 
-javascript
-
 $(document).ready(function() {
-
-  function handleRadioChange() {
-    var selectedValue = $('input[name="periode"]:checked').val();
-
-    // ENABLE/DISABLE SELECT HTML ELEMENT BASED ON THE SELECTED RADIO BUTTON
-    if (selectedValue === 'jour') {
-      $('#hourInput').prop('disabled', false);
-      $('#hourInputNight').prop('disabled', true);
-    } else if (selectedValue === 'soir') {
-      $('#hourInput').prop('disabled', true);
-      $('#hourInputNight').prop('disabled', false);
-    }
-  }
-
+  // RADIO BUTTON HANDLING
   $('#hourInput').prop('disabled', true);
-  $('#hourInputNight').prop('disabled', true);
+            $('#hourInputNight').prop('disabled', true);
 
 
-  $('#booking-modal').on('shown.bs.modal', function() {
-    $('input[name="periode"]').change(handleRadioChange);
+  $('input[name="periode"]').change(function() {
+  var selectedValue = $(this).val();
+
+  // DISABLE SELECT HTML ELEMENT BY WHICH RADIO HAS BEEN PRESSED
+  if (selectedValue === 'jour') {
+    $('#hourInput').prop('disabled', false);
+    $('#hourInputNight').prop('disabled', true);
+  } else if (selectedValue === 'soir') {
+    $('#hourInput').prop('disabled', true);
+    $('#hourInputNight').prop('disabled', false);
+  }
+    });
   });
-
-  $('#booking-modal').on('hidden.bs.modal', function() {
-    $('input[name="periode"]').off('change', handleRadioChange);
-  });
-});

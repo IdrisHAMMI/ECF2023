@@ -124,7 +124,7 @@
                       </select>
                       <label for="plates">Couverts</label>
                       <br>
-                      <input type="radio" name="periode" value="jour" checked> Jour
+                      <input type="radio" name="periode" value="jour"> Jour
                       <br>
                       <input type="radio" name="periode" value="soir"> Soir
                         </div>
@@ -151,6 +151,7 @@
       </div>
     </div>
     <script src="scripts/modalReserve.js"> </script>
+    
     <!--MODAL END-->
     </section>
     <footer>

@@ -2,38 +2,35 @@
 session_start();
 $pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '');
   
-  $platesNumber = $_POST['platesClient'];
-  $date = $_POST['dateInput'];
-  if($_POST['hourInput'] == '') {
-    $hour = $_POST['hourInputNight'];
-  } else {
-    $hour = $_POST['hourInput'];
-  }
+$platesNumber = $_POST['platesClient'];
+$date = $_POST['dateInput'];
 
-$sql = "SELECT COUNT(*) as bookingLimit FROM booking WHERE bookingDay=:date AND bookingTime=:heure";
-$query = $pdo->prepare($sql);
-$query->bindParam(':date', $date);
-$query->bindParam(':heure', $hour);
-$query->execute();
+// Determine the time field based on the selected period
+if ($_POST['hourInput'] == '') {
+    $hourField = 'timeNightOpening';
+} else {
+    $hourField = 'timeNoonOpening';
+}
 
-$row = $query->fetch(PDO::FETCH_ASSOC);
+// Check if a schedule for the chosen date exists
+$sqlCheck = "SELECT schedule_Id FROM schedule WHERE days = :date";
+$queryCheck = $pdo->prepare($sqlCheck);
+$queryCheck->bindParam(':date', $date);
+$queryCheck->execute();
+$existingScheduleId = $queryCheck->fetchColumn();
 
-// Vérification de la disponibilité des tables
-if ($row['bookingLimit'] < 3) {
-
-    $sql = "INSERT INTO booking (bookingEmail, bookingDay, bookingTime, bookingSeats, bookingAlergies) VALUES (:email, :dateInput, :hourInput, :platesClient, :allergies)";
+if ($existingScheduleId) {
+    // If a schedule exists, update it
+    $sql = "UPDATE schedule SET $hourField = :hour WHERE schedule_Id = :scheduleId";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':email', $_SESSION['userEmail']);
-    $stmt->bindParam(':platesClient', $platesNumber);
-    $stmt->bindParam(':dateInput', $date);
-    $stmt->bindParam(':hourInput', $hour);
-    $stmt->bindParam(':allergies', $_SESSION['allergies']);
+    $stmt->bindParam(':hour', $hour);
+    $stmt->bindParam(':scheduleId', $existingScheduleId);
     $stmt->execute();
-    $response = "Nombre de couverts : " . $platesNumber . "\n";
-    $response .= "Date : " . $date;
-    
-    $response = array('bookingLimit' => $platesNumber);
-    echo json_encode($response);
-  } else {
-    return "Nous sommes complets!"; // Si toutes les tables sont réservées, renvoie la réponse "COMPLET"
-  }
+    $response = "Schedule for date $date has been updated.";
+} else {
+    // If no schedule exists, insert a new one
+    $response = "No schedule found for date $date.";
+}
+
+// Return the response to the client
+echo json_encode(['message' => $response]);
