@@ -40,29 +40,21 @@
             <input type="password" class="form-control"  name="password" placeholder="Mot de Passe" />
           </div>
           <div class="submit-group">
-            <button type="submit" name="submit">Connection</button>
+            <button type="submit" name="submit" style="margin-top: 15px;">Connection</button>
             <br>
             <p>Pas de compte? <br><a href="signup.php">Inscrivez vous Maintenant !</a></p>
           </form>
           
           <?php
     if (isset($_GET["error"])) {
-      if ($_GET["error"] == "emptyinput") {
-        echo "<p>Remplissez tous les champs !</p>";
-      }
-      if (isset($_GET["error"])) {
-        if($_GET["error"] == "invalidemail") {
-          echo "<p>Cette E-mail existe deja.</p>";
-        }
-      }
-      if ($_GET["error"] == "stmtfailed") {
-        echo "<p>Statement failed. Debug the code and try again!</p>";
-      }
-      if($_GET["error"] == "wronglogin") {
-        echo "<p>Cette Email n'existe pas. Essayer avec un autre Email.</p>";
-      }
-    }
-  
+      switch ($_GET["error"]) {
+          case "emptyinput":
+              echo "<p>Remplissez tous les champs !</p>";
+              break;
+          default:
+              echo "<p>Les données que vous avez introduites ne sont pas valide.</p>";
+     }
+  }
   ?>
           </div>
       </div>

@@ -2,7 +2,7 @@
 
 $pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '');
 
-// Récupération des données du formulaire
+//FETCHING FORM DATA
 $days = $_POST['jour'];
 
 $sql = "SELECT timeNoonOpening, timeNoonEnd FROM schedule WHERE days= :jour";
@@ -18,11 +18,10 @@ $hourStart = $row['timeNoonOpening'];
 $hourEnd = $row['timeNoonEnd'];
 
 
-
   $opening = strtotime($hourStart); // OPENING HOUR
   $closing = strtotime($hourEnd); // CLOSING HOUR
   
-  $range  = 15 * 60; // Pas de 15 minutes en secondes
+  $range  = 15 * 60;  // HOUR LIST WILL INCREASE BY 15 MINUTES
   
   for ($hour = $opening; $hour < $closing; $hour += $range ) {
       $hour_format = date('H:i', $hour);

@@ -32,47 +32,59 @@
       <div class="panel-body">
         <form action="includes/signup.inc.php" style="max-width: 300px; margin: auto;" method="post">
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email" style="margin-top: 15px;">Email</label>
             <input type="text" class="form-control" name="email" placeholder="E-Mail" />
           </div>
           <div class="form-group">
-            <label for="password">Mot de Passe</label>
+            <label for="password" style="margin-top: 15px;">Mot de Passe</label>
             <input type="password" class="form-control" name="password" placeholder="Mot de Passe"/>
           </div>
           <div class="form-group">
-            <label for="password">Retapper votre Mot de Passe</label>
+            <label for="password" style="margin-top: 15px;">Retapper votre Mot de Passe</label>
             <input type="password" class="form-control" name="pwdrepeat" placeholder="Retapper votre Mot de Passe"/>
           </div>
           <div class="form-group">
-            <label for="allergies">Avez vous des allergies?</label>
+            <label for="allergies" style="margin-top: 15px;">Avez vous des allergies?</label>
             <textarea type="text" class="form-control" name="allergies" placeholder=""></textarea>
           </div>
           <div class="form-group">
-            <label for="convives">Avez vous des convives?</label>
-            <input type="text" class="form-control" name="convives" placeholder=""/>
+            <label for="convives" style="margin-top: 15px;">Avez vous des convives?</label>
+            <select class="form-select" name="convives" >
+              <option value="1">Une Personne</option>
+              <option value="2">Deux Personnes</option>
+            </select>
           </div>
             </div>
             <br>
           <div class="submit-group">
             <button type="submit" name="submit">S'enregistrer</button>
-
             <?php
 if (isset($_GET["error"])) {
-  if ($_GET["error"] == "emptyinput") {
-    echo "<p>Remplissez tous les champs !</p>";
-  }
-  if ($_GET["error"] == "invalidemail") {
-    echo "<p>Choisissez un Email valide !</p>";
-  }
-  if ($_GET["error"] == "pwdnotmatched") {
-    echo "<p>Les mots de passe doivent être les mêmes.</p>";
-  }
-  if ($_GET["error"] == "userexists") {
-    echo "<p>Cette Email existe deja. Enregistrer vous avec une autre mail.</p>";
-  }
-  if ($_GET["error"] == "none") {
-    echo "<p>Merci de vous avoir inscrit !<br> Vous pouvez maintenant prendre une reservation dans notre restaurant.<br><a href=\"index.php\">Retourner vers l'index.</a></p>";
-  }
+    switch ($_GET["error"]) {
+        case "emptyinput":
+            echo "<p>Remplissez tous les champs !</p>";
+            break;
+        case "emailnotmatched":
+            echo "<p>Choisissez une adresse email valide.</p>";
+            break;
+        case "invalidemail":
+            echo "<p>Cette Email et deja pris.</p>";
+            break;
+        case "pwdnotmatched":
+            echo "<p>Les mots de passe doivent être identiques.</p>";
+            break;
+        case "invalidpwd":
+              echo "<p>Les conditions de mot de passe ne sont pas remplies.</p>";
+              break;    
+        case "userexists":
+            echo "<p>Cette adresse email existe déjà. Veuillez vous enregistrer avec une autre adresse email.</p>";
+            break;
+        case "none":
+            echo "<p>Merci de vous être inscrit !<br> Vous pouvez maintenant réserver une table dans notre restaurant.<br><a href=\"index.php\">Retourner à l'accueil.</a></p>";
+            break;
+        default:
+            echo "<p>Une erreur s'est produite.</p>";
+   }
 }
 ?>
           </form>

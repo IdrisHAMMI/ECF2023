@@ -19,7 +19,6 @@ class LoginContr extends Login {
     $this->getUser($this->email , $this->password);
   }
   
-
 //EMPTY SIGNUP FUNCTION
   private function emptyInput() {
     $result;

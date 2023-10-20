@@ -24,20 +24,30 @@ class SignupContr extends Signup {
       header("location: ../signup.php?error=emptyinput");
       exit();
     }
-    if($this->invalidEmail() == false) {
-      // echo "Invalid Email!";
-      header("location: ../signup.php?error=email");
+    if($this->emailConditionsMet() == false) {
+      // echo "Email conditions are not valid!";
+      header("location: ../signup.php?error=emailcondition");
       exit();
     }
-    if($this->pwdMatch() == false) {
-      // echo "Password doesn't match!";
+    if($this->isValidSignup() == false) {
+      // echo "Invalid Email!";
+      header("location: ../signup.php?error=invalidemail");
+      exit();
+    }
+    if ($this->pwdMatch() == false) {
+      // echo "Password does not match!";
       header("location: ../signup.php?error=pwdnotmatched");
       exit();
     }
-      if($this->uidExists() == false) {
-        // echo "Password doesn't match!";
-        header("location: ../signup.php?error=userexists");
-        exit();
+    if ($this->passwordConditionsMet() == false) {
+       // echo "Password conditions not met!"; 
+       header("location: ../signup.php?error=invalidpwd");
+       exit();
+    }
+    if($this->uidExists() == false) {
+      // echo "User credentials already exists!";
+      header("location: ../signup.php?error=userexists");
+      exit();
     }
     $this->setUser($this->email, $this->password, $this->allergies, $this->convives);
   }
@@ -45,50 +55,45 @@ class SignupContr extends Signup {
 
 //EMPTY SIGNUP FUNCTION
 public function emptyInputSignup() {
-  $result;
-  if(empty($this->email) || empty($this->password)) {
-    $result = false;
-  }
-  else {
-    $result = true;
-  }
-  return $result;
+  return !empty($this->email) && !empty($this->password) && !empty($this->allergies) && !empty($this->convives);
 } 
 
-//INVALID EMAIL FUNCTION
-private function invalidEmail() {
-  $result; 
-  if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-    $result = false;
-  }
-  else {
-    $result = true;
-  }
-  return $result;
+//EMAIL CONDITIONS FUNCTION
+private function emailConditionsMet() {
+  //REGEX ALGORITHM FOR EMAIL (RESULT IS NO LONGER NEEDED THANKS TO THE REXEG PATTERN-BASED VALIDATION)
+  //CHECKS IF THE EMAIL ADDRESS IS WELL FORMED
+  $emailPattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+  return preg_match($emailPattern, $this->email) && filter_var($this->email, FILTER_VALIDATE_EMAIL);
 }
 
+//PASSWORD CONDITION VALIDATION FUNCTION
+private function passwordConditionsMet() {
+  //REGEX ALGORITHM FOR EMAIL (RESULT IS NO LONGER NEEDED THANKS TO THE REXEG PATTERN-BASED VALIDATION)
+  //APPLIES PASSWORD VALIDATION WITH THE FOLLOWING RULES:
+  
+  // 8 CHARACTERS MIN
+  //ONE UPPERCASE LETTER MIN
+  //ONE LOWERCASED LETTER MIN
+  //ONE DIGIT (NUMBER)
+  //ALLOWS SPECIAL CHARECTERS OF THE FOLLOWING : (!@#$%^&*)
 
-//PASSWORD MATCH FUNCTION
+  $passwordPattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/';
+  return preg_match($passwordPattern, $this->password);
+}
+
+//SIGNUP CHECK FUNCTION
+private function isValidSignup() {
+  return $this->emptyInputSignup() && $this->emailConditionsMet() && $this->pwdMatch() && $this->passwordConditionsMet();
+}
+
+//PASSWORD MATCHING FUNCTION
 private function pwdMatch() {
-  $result;
-  if($this->password !== $this->pwdRepeat) {
-    $result = false;
-  }
-  else {
-    $result = true;
-  }
-  return $result;
-  }
+  return $this->password === $this->pwdRepeat;
+}
 
   //PASSWORD MATCH FUNCTION
 private function uidExists() {
-  $result;
-  if($this->checkUser($this->email)) {
-    $result = true;
+  return $this->checkUser($this->email);
   }
-  else {
-    $result = false;
-  }
-  return $result;
-  }
-} //END OF CLASS
+}
+//END OF CLASS
