@@ -1,58 +1,44 @@
-      //DATEPICKER API
-      $('#datepicker').datepicker({
-        uiLibrary: 'bootstrap5'
-    });
+$(document).ready(function() {
+  //DATEPICKER API
+  $('#datepicker').datepicker({
+      uiLibrary: 'bootstrap5'
+  });
 
+  // UPDATE AVAILABILITY FUNCTION
+  function updateAvailability() {
+      var date = $('#dateInput').val();
+      var hour = $('input[name="periode"]:checked').val() === 'jour' ? $('#hourInput').val() : $('#hourInputNight').val();
+      var seats = $('#platesClient').val();
 
-    // AVAILABLE SEATS FUNCTION
-    $(document).ready(function() {
+      if (date && hour) {
+          $.ajax({
+              type: 'POST',
+              url: 'tableCheck.php',
+              data: { date: date, heure: hour },
+              success: function(response) {
+                  $('#disponibilite-message').text(response);
+              }
+          });
+      }
+  }
 
-    function updateDispo() {
-    
-    var date = $('#dateInput').val();
-    if(($('#hourInput').val()) == '') {
-      var hour = $('#hourInputNight').val();
-    } else {
-      var hour = $('#hourInput').val();
-    }
-    var seats = $('#platesClient').val();
-    
-    $.ajax({
-        type: 'POST',
-        url: 'booking.php',
-        data: { bookingDate: date, bookingTime: hour, platesClient: seats },
-        dataType: 'json',
-        success: function(response) {
-          $('#dispo-message').html('Success');
-        }
-    });
-}
+  // BIND EVENTY HANDLERS 
+  $('#dateInput, input[name="periode"], #hourInput, #hourInputNight').on('change', updateAvailability);
 
-// FIRST TIME FUNCTION CALL
-$('#reservation-form').submit(function(event) {
-updateDispo();
-});
-// UPDATE AVAILABILITY IN REAL TIME
-$('#date, #heure').on('change', function() {
-    updateDispo();
-});
-});
+  // HANDLE FORM SUBMISSION
+  $('#my-form').submit(function(event) {
+      event.preventDefault();
+      var formData = $(this).serialize();
 
-    $(document).ready(function() {
-        $('#my-form').submit(function(event) {
-            event.preventDefault();
-            var formData = $(this).serialize();
-            $.ajax({
-                type: 'POST',
-                url: 'booking.php',
-                data: formData,
-                success: function(response) {
-                    // SERVER RESPONSE
-                    $('#dispo-message').html(response);
-                }
-            });
-        });
-    });
+      $.ajax({
+          type: 'POST',
+          url: 'booking.php',
+          data: formData,
+          success: function(response) {
+              $('#dispo-message').html(response);
+          }
+      });
+  });
 
     $(document).ready(function() {
 $('#hourInput').change(function() {
@@ -182,3 +168,4 @@ $(document).ready(function() {
   }
     });
   });
+});

@@ -31,9 +31,8 @@ if ($row['bookingLimit'] < 3) {
     $stmt->execute();
     $response = "Nombre de couverts : " . $platesNumber . "\n";
     $response .= "Date : " . $date;
-    
-    $response = array('bookingLimit' => $platesNumber);
-    echo json_encode($response);
-  } else {
-    return "Nous sommes complets!";
-  }
+
+    echo json_encode(array('message' => $response)); // Send JSON response
+} else {
+    echo json_encode(array('message' => 'Nous sommes complets!')); // Send JSON response
+}

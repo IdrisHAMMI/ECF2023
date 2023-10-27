@@ -18,4 +18,3 @@ $availableTables = $row['bookingLimit'];
 // SEND DATA TO JSON FORMAT
 $response = 'Disponibilite:' . 3 - $availableTables;
 echo json_encode($response);
-?>
