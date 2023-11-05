@@ -35,7 +35,7 @@
             <li class="nav-item dropdown_element">
                 <a style="color: black;" href="add_menu.php" class="nav-link">Ajout de Menu</a>
             <li class="nav-item dropdown_element">
-                <a style="color: black;" href="add_menu.php" class="nav-link">Modif. Horaires d'ouverture</a>
+                <a style="color: black;" href="modify_timetable.php" class="nav-link">Modif. Horaires d'ouverture</a>
             </li>
         </ul>
         </ul>
@@ -54,22 +54,23 @@
             <div class="form-group">
             <label for="menu_title" style="margin-top: 20px;">Ajout du titre de Menu</label>
             <input class="form-control" name="menu_title" type="text" placeholder="Titre du Menu...">
-            <label for="menu_schedule"style="margin-top: 20px;">Horaire pour servir le Menu</label>
+            <label for="menu_schedule" style="margin-top: 20px;">Horaire pour servir le Menu</label>
             <input class="form-control" name="menu_schedule" type="text" placeholder="Horraire pour servir Menu...">
-</div>
-            <label for="menu_bio">Ajout de la description du Menu</label>
-            <textarea class="form-control" name="menu_bio" placeholder="Biographie de la Photo...">
-          </textarea>
           </div>
+            <label for="menu_bio" style="margin-top: 20px;">Ajout de la description du Menu</label>
+            <textarea class="form-control" name="menu_bio" placeholder="Biographie de la Photo..."></textarea>
+          </div>
+            <label for="menu_schedule"style="margin-top: 20px;">Prix du Menu</label>
+            <input class="form-control" name="menu_price" type="text" placeholder="Prix du menu...">
             <br>
           <div class="submit-group">
-            <button type="submit" name="submit">Ajouter</button>
+            <button type="submit" name="submit" style="margin-bottom: 20px;">Ajouter</button>
           </form>
           </div>
       </div>
       </div>
     </div>
-<script src="../scripts/displayTrigger.js"></script>
+<script src="../scripts/appScript.js"></script>
   </body>
   <!--ERROR HANDLING-->
   <?php

@@ -3,10 +3,10 @@
   $pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '');
 
   //CHECKS IF THE FORM IS EMPTY, IF YES THEN START ERROR HANDLING
-  if (empty($_POST['days']) || empty($_POST['time']) || empty($_POST['scheduleOpen']) || empty($_POST['scheduleEnd'])) {
-    header("Location: ../admin/modify_timetable.php?error=empty_input");
-    exit();
-  }
+
+
+  //SCHEDULE STATUS
+  $scheduleStatus = $_POST['scheduleStatus'];
 
   // DAYS
   $weekDays = $_POST['days'];
@@ -35,8 +35,23 @@
       ':scheduleOpen' => $scheduleOpen,
       ':scheduleEnd' => $scheduleEnd,
       ':weekDays' => $weekDays
-  ]);
+    ]); 
 }
+
+    if ($scheduleStatus == 'scheduleClosed' && $time == 'noon'){
+      $sql = "UPDATE schedule SET timeNoonOpening = 'Fermée', timeNoonEnd = 'Fermée' WHERE days = :weekDays";
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute([
+        ':weekDays' => $weekDays
+    ]); 
+  }  elseif ($scheduleStatus == 'scheduleClosed' && $time == 'night'){
+    $sql = "UPDATE schedule SET timeNightOpening = 'Fermée',  timeNightEnd = 'Fermée' WHERE days = :weekDays";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+      ':weekDays' => $weekDays
+  ]); 
+}
+
 //ERROR HANDLING
 if (!empty($_POST['days']) || !empty($_POST['time']) || !empty($_POST['scheduleOpen']) || !empty($_POST['scheduleEnd'])) {
   header("Location: ../admin/modify_timetable.php?error=none");

@@ -20,7 +20,6 @@ $row = $query->fetch(PDO::FETCH_ASSOC);
 
 
 if ($row['bookingLimit'] < 3) {
-
     $sql = "INSERT INTO booking (bookingEmail, bookingDay, bookingTime, bookingSeats, bookingAlergies) VALUES (:email, :dateInput, :hourInput, :platesClient, :allergies)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':email', $_SESSION['userEmail']);
@@ -29,10 +28,9 @@ if ($row['bookingLimit'] < 3) {
     $stmt->bindParam(':hourInput', $hour);
     $stmt->bindParam(':allergies', $_SESSION['allergies']);
     $stmt->execute();
-    $response = "Nombre de couverts : " . $platesNumber . "\n";
-    $response .= "Date : " . $date;
+    $response = "Merci d'avoir reservé!";
 
-    echo json_encode(array('message' => $response)); // Send JSON response
+    echo json_encode(array('message' => $response)); 
 } else {
-    echo json_encode(array('message' => 'Nous sommes complets!')); // Send JSON response
+    echo json_encode(array('message' => 'Nous sommes complets!'));
 }

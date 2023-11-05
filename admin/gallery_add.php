@@ -36,7 +36,7 @@
                 <a style="color: black;" href="add_menu.php" class="nav-link">Ajout de Menu</a>
             </li>
             <li class="nav-item dropdown_element">
-                <a style="color: black;" href="add_menu.php" class="nav-link">Modif. Horaires d'ouverture</a>
+                <a style="color: black;" href="modify_timetable.php" class="nav-link">Modif. Horaires d'ouverture</a>
             </li>
         </ul>
     </div>
@@ -63,13 +63,13 @@
           </div>
             <br>
           <div class="submit-group">
-            <button type="submit" name="submit">Ajouter</button>
+            <button type="submit" name="submit" style="margin-bottom: 20px;">Ajouter</button>
           </form>
           </div>
       </div>
       </div>
     </div>
-<script src="../scripts/displayTrigger.js"></script>
+<script src="../scripts/appScript.js"></script>
   </body>
   <!--ERROR HANDLING-->
   <?php

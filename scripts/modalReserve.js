@@ -13,7 +13,7 @@ $(document).ready(function() {
       if (date && hour) {
           $.ajax({
               type: 'POST',
-              url: 'tableCheck.php',
+              url: 'booking.php',
               data: { date: date, heure: hour },
               success: function(response) {
                   $('#disponibilite-message').text(response);
@@ -31,62 +31,17 @@ $(document).ready(function() {
       var formData = $(this).serialize();
 
       $.ajax({
-          type: 'POST',
-          url: 'booking.php',
-          data: formData,
-          success: function(response) {
-              $('#dispo-message').html(response);
-          }
+        type: 'POST',
+        url: 'booking.php',
+        data: formData,
+        dataType: 'json', // Ensure that the response is treated as JSON
+        success: function(response) {
+
+          $('#dispo-message').text(response.message); // Update the modal with the message
+        }
       });
   });
-
-    $(document).ready(function() {
-$('#hourInput').change(function() {
-    
-var date = $('#dateInput').val();
-var hour = $('#hourInput').val();
-// CHECKING FOR NON-EMPTY FIELDS
-if (date !== '' && hour !== '') {
-  var formData = {
-    date: date,
-    hour: hour
-  };
-
-  $.ajax({
-    type: 'POST',
-    url: 'tableCheck.php',
-    data: formData,
-    success: function(response) {
-      $('#disponibilite-message').text(response);
-    }
-  });
-}
-});
-});
-
-$(document).ready(function() {
-$('#hourInputNight').change(function() {
-var date = $('#dateInput').val();
-var hour = $('#hourInputNight').val();
-// 
-if (date !== '' && hour !== '') {
-  var formData = {
-    date: date,
-    hour: hour
-  };
-
-  $.ajax({
-    type: 'POST',
-    url: 'tableCheck.php',
-    data: formData,
-    success: function(response) {
-      $('#disponibilite-message').text(response);
-    }
-  });
-}
-});
-});
-
+  
 $(document).ready(function() {
 function detectJour(jour) {
     
@@ -152,7 +107,7 @@ $('#dateInput').change(function() {
 $(document).ready(function() {
   // RADIO BUTTON HANDLING
   $('#hourInput').prop('disabled', true);
-            $('#hourInputNight').prop('disabled', true);
+  $('#hourInputNight').prop('disabled', true);
 
 
   $('input[name="periode"]').change(function() {

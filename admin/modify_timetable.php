@@ -36,7 +36,7 @@
                 <a style="color: black;" href="add_menu.php" class="nav-link">Ajout de Menu</a>
             </li>
             <li class="nav-item dropdown_element">
-                <a style="color: black;" href="add_menu.php" class="nav-link">Modif. Horaires d'ouverture</a>
+                <a style="color: black;" href="modify_timetable.php" class="nav-link">Modif. Horaires d'ouverture</a>
             </li>
         </ul>
         </ul>
@@ -46,7 +46,7 @@
 <section>
   <div class="container justify-content-center mt-5 border rounded">
     <div>
-      <div class="col-sm">
+      <div class="col-sm" style="margin-bottom: 20px;">
       <div class="panel-heading">
         <h1 style="text-align: center;">Page d'Ajout/Modification d'Horaire</h1>
       </div>
@@ -54,6 +54,12 @@
         <!--USER TABLE AUTH START-->
         <form action="../includes/scheduleAdd.inc.php" method="post">
         <h2 class="text-center">Horaire de la Semaine</h2>
+        <p>Choissiser la disponibilité du restaurant:</p>
+        <select class="form-select" name="scheduleStatus" id="booking_availability">
+          <option value="scheduleOpen">Ouvert</option>
+          <option value="scheduleClosed">Fermée</option>
+        </select>
+        <br>
           <select class="form-select" name="days" id="days">
             <option value="Lundi">Lundi</option>
             <option value="Mardi">Mardi</option>
@@ -67,28 +73,39 @@
           <select class="form-select" name="time" id="time">
             <option value="noon">Midi</option>
             <option value="night">Soir</option>
+          <?php if ($scheduleClosed): ?>
+            <option value="allDay">La Journée</option>
+          <?php endif; ?>
           </select>
           <br>
           <div class="form-group">
             <label for="schedule">Mettez l'horaire desirer...</label>
-            <input type="text" name="scheduleOpen" placeholder="Debut D'horaire..." />
-            <input type="text" name="scheduleEnd" placeholder="Fin D'horaire..." />
+            <input type="text" oninput="scheduleField(event)" id="scheduleOpen"name="scheduleOpen" placeholder="Debut D'horaire..." />
+            <input type="text" oninput="scheduleField(event)" id="scheduleEnd" name="scheduleEnd" placeholder="Fin D'horaire..." />
           </div>
-          <div class="submit-group">
-            <button type="submit" name="submit">Ajouter</button>
+          <div class="submit-group text-center">
+            <button type="submit" name="submit" style="margin-top: 10px;">Ajouter</button>
+            <!--TIMETABLE FUNCTIONS-->
+            <script src="../scripts/appScript.js"></script>
+
             <!--ERROR HANDLING-->
             <?php
         if (isset($_GET["error"])) {
-          if ($_GET["error"] == "empty_input") {
+          switch ($_GET["error"]) {
+          case "empty_input":
             echo "<p>Selectionner et remplissez tous les champs !</p>";
-          }
-          if ($_GET["error"] == "none") {
-            echo "<p>Horaire mise en ligne et mise a jour !</p>";
-          }
-          if ($_GET["error"] == "upload_failed") {
+          break;
+          case "none":
+            echo "<p>Horaire mise a jour !</p>";
+          break;
+          case "upload_failed":
             echo "<p>Il y a eu un probleme avec la mise en ligne<br>des horaires.</p>";
+          break;
+          default: 
+          echo "<p>Les données que vous avez introduites ne sont pas valide.</p>";          
+          break;
           }
-        }  
+        }
         ?>
           </form>
   </body>

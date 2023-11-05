@@ -2,6 +2,7 @@
 @import url("http://fonts.googleapis.com/css?family=Oswald:400,300,700");
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Dosis:wght@600&family=Fraunces:wght@100&family=Fredericka+the+Great&family=Oswald:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
 /*FONTS*/
 
 .web_logo {
@@ -19,7 +20,7 @@ body {
 }
 
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:hover {
   color: rgb(255, 255, 255);
 }
 
@@ -36,7 +37,9 @@ body {
   color: white;
   text-align: center;
 }
-
+#days, #time, #booking_availability {
+  width: 100px;
+}
 .opening_wrapper {
   background: #111111;
   padding: 35px;
@@ -58,9 +61,7 @@ hr {
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-  background-color: #e8b043;
-  transition: 0.50s;
-  border-radius: 10px;
+  text-decoration: underline;
 }
 
 #welcome_footer {
@@ -79,7 +80,7 @@ hr {
 }
 
 .menu-section {
-  padding: 70px 0 100px;
+  padding: 70px 0 70px;
   background: url("assets/food_background.jpg") center center no-repeat;
 }
 
@@ -118,20 +119,19 @@ section.popular-menu-section .menu-box .item .menu-post .menu-post-content {
   text-align: center;
 }
 
-.menuTitle {
+.menuTitle, .menuPrice {
   color: rgb(252, 186, 3);
 } 
 
-.menuTitle, .menuSchedule, .menuDescriptionPrice {
+.menuTitle, .menuSchedule, .menuDescription, .menuPrice {
   font-family: 'Fredericka the Great', cursive;
 }
 
-.menuSchedule, .menuDescriptionPrice {
+.menuSchedule, .menuDescription {
   color: white;
 }
 
 button {
-  margin-bottom: 15px;
   padding: 9px 40px;
   background-color:rgb(255, 255, 255);
   border-color: rgba(0, 85, 243,0.8);
@@ -149,13 +149,17 @@ button:hover {
 }
 
 footer {
+  font-family: Agbalumo;
   flex-shrink: 0;
-  border-top: 1px solid #000;
   width: 100%;
-  background: #fff;
-  color: #333;
+  background: #312b2b;
+  color: white;
   padding: 20px;
   margin-top: auto;
+}
+
+.schedules {
+  text-align: center; 
 }
 
 .content-footer {
@@ -164,13 +168,20 @@ footer {
   max-width: 1000px;
   margin: 0 auto;
   text-align : center;
-  justify-content: center;
-  align-items: flex-start;
-  font-size: 16px;
-  padding: 50px 0 50px;
+}
+.schedule-row {
+  font-family: Arial, sans-serif;
+  font-size: 14px; /* Smaller font size */
+  color: #333;
+  padding: 5px; /* Less padding */
+
+  text-align: left;
+}
+.days_schedule, .hour_schedule {
+  margin-bottom: 20px;
 }
 
-.days_schedule, .hour_schedule {
+#hourInputNight {
   margin-bottom: 20px;
 }
 
@@ -182,6 +193,10 @@ footer {
   text-align: center;
 }
 
+#dateInput {
+ margin-bottom: 20px;
+}
+
 @media (max-width: 992px) {
   .nav-link {
     margin-right: 10px;
@@ -190,11 +205,15 @@ footer {
     width: 170px
   }
   .main_nav {
+    padding-top: 10px;
     flex-direction: row;
+  }
+  #bookingmodal {
+    margin-bottom: 0px;
   }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 596px) {
   .img_brand {
     text-align: center;
     width: 100%;
