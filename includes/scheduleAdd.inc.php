@@ -2,9 +2,6 @@
   
   $pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '');
 
-  //CHECKS IF THE FORM IS EMPTY, IF YES THEN START ERROR HANDLING
-
-
   //SCHEDULE STATUS
   $scheduleStatus = $_POST['scheduleStatus'];
 

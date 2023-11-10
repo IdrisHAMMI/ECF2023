@@ -44,10 +44,10 @@
             <br>
             <p>Pas de compte? <br><a href="signup.php">Inscrivez vous Maintenant !</a></p>
           </form>
-          
           <?php
+    //ERROR HANDLING
     if (isset($_GET["error"])) {
-      switch ($_GET["error"]) {
+     switch ($_GET["error"]) {
           case "emptyinput":
               echo "<p>Remplissez tous les champs !</p>";
               break;

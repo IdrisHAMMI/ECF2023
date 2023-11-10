@@ -59,31 +59,32 @@
           <div class="submit-group">
             <button type="submit" name="submit">S'enregistrer</button>
             <?php
-if (isset($_GET["error"])) {
-    switch ($_GET["error"]) {
-        case "emptyinput":
-            echo "<p>Remplissez tous les champs !</p>";
-            break;
-        case "emailnotmatched":
-            echo "<p>Choisissez une adresse email valide.</p>";
-            break;
-        case "invalidemail":
-            echo "<p>Cette Email et deja pris.</p>";
-            break;
-        case "pwdnotmatched":
-            echo "<p>Les mots de passe doivent être identiques.</p>";
-            break;
-        case "invalidpwd":
-              echo "<p>Les conditions de mot de passe ne sont pas remplies.</p>";
-              break;    
-        case "userexists":
-            echo "<p>Cette adresse email existe déjà. Veuillez vous enregistrer avec une autre adresse email.</p>";
-            break;
-        case "none":
-            echo "<p>Merci de vous être inscrit !<br> Vous pouvez maintenant réserver une table dans notre restaurant.<br><a href=\"index.php\">Retourner à l'accueil.</a></p>";
-            break;
-        default:
-            echo "<p>Une erreur s'est produite.</p>";
+            //ERROR HANDLING
+            if (isset($_GET["error"])) {
+                switch ($_GET["error"]) {
+                  case "emptyinput":
+                      echo "<p>Remplissez tous les champs !</p>";
+                      break;
+                  case "emailnotmatched":
+                      echo "<p>Choisissez une adresse email valide.</p>";
+                      break;
+                  case "invalidemail":
+                      echo "<p>Cette Email et deja pris.</p>";
+                      break;
+                  case "pwdnotmatched":
+                      echo "<p>Les mots de passe doivent être identiques.</p>";
+                      break;
+                  case "invalidpwd":
+                        echo "<p>Les conditions de mot de passe ne sont pas remplies.</p>";
+                        break;    
+                  case "userexists":
+                      echo "<p>Cette adresse email existe déjà. Veuillez vous enregistrer avec une autre adresse email.</p>";
+                      break;
+                  case "none":
+                      echo "<p>Merci de vous être inscrit !<br> Vous pouvez maintenant réserver une table dans notre restaurant.<br><a href=\"index.php\">Retourner à l'accueil.</a></p>";
+                      break;
+                  default:
+                      echo "<p>Une erreur s'est produite.</p>";
    }
 }
 ?>

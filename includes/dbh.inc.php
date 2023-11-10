@@ -17,8 +17,9 @@ $this->password = "";
 $this->dbname = "ecf_restaurant";
 $this->charset = "utf8mb4";
 
+//DATABASE DETAILS ARE ONLY USED FOR EDUCATIONAL PURPOSES
 
-//HOSTING SERVER DETAILS
+    //HOSTING SERVER DATABASE DETAILS
     //$this->servername = "localhost";
     //$this->username = "id20788719_root";
     //$this->password = "Travis00756&";

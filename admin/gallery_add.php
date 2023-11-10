@@ -69,6 +69,7 @@
       </div>
       </div>
     </div>
+    <a href="../index.php">Retourner a L'index</a>
 <script src="../scripts/appScript.js"></script>
   </body>
   <!--ERROR HANDLING-->

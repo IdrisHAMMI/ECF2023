@@ -71,10 +71,9 @@
               ?>
               </ul>
         </nav>
-
-<br>
-<div class="container mx-auto d-block" style="margin-bottom: 50px;">
-				<h1 id="schedule_header">Nos Menus</h1>
+      <br>
+        <div class="container mx-auto d-block" style="margin-bottom: 50px;">
+				  <h1 id="schedule_header">Nos Menus</h1>
 				<section class="menu-section">
         <div class="container" >
           <!--MENU QUERY-->
@@ -92,10 +91,9 @@
             </div>
             <?php 
             } 
-            
              ?>
-     <!--MODAL-->
-     <div class="modal fade" id="booking-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <!--MODAL-->
+                      <div class="modal fade" id="booking-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog" role="document">
                  <div class="modal-content">
                    <div class="modal-header">
@@ -107,10 +105,11 @@
                    <div class="modal-body">
                     <form id="my-form">
                     <p class="modal-paragraph" style="text-align: center;" >Veuillez choisir le jour, l'heure et le nombre<br>de convives avec vous.</p>
-                    <p class="modal-paragraph" style="text-align: center;">Pour des raisons de securité,<br>le nombre de convives accepté est limité a 3.</p>
+                    <p class="modal-paragraph" style="text-align: center;">Pour des raisons de securité,<br>le nombre de reservations accepté est limité a 3.</p>
                       <div class="row">
                         <div class="col-5">
                      <div class="form-floating">
+                      <p style="margin-bottom: 0px;">Date de Reservation: </p>
                      <div class="input-group date" id="datepicker">
                         <input type="text" class="form-control" name="dateInput" id="dateInput"/>
                       <span class="input-group-append">
@@ -127,10 +126,9 @@
                         <option value="2">2</option>
                         <option value="3">3</option>
                       </select>
-                      
                       <label for="plates">Couverts</label>
                       <br>
-                      <input type="radio" name="periode" value="jour" checked> Jour
+                      <input type="radio" name="periode" value="jour"> Jour
                       <br>
                       <input type="radio" name="periode" value="soir"> Soir
                         </div>
@@ -143,10 +141,20 @@
                        <select id="hourInputNight" class="form-select" name="hourInputNight">
                       </select>
                       </div>
+                      <div>
+                       <label for="alergies_form" style="margin-top: 20px;">Specifier vos alergies</label>
+                       <br>
+                       <textarea class="form-control" id="allergiesModal" name="allergiesString"></textarea>
+                       <br>
+                       <input type="radio" id="allergiesModal" name="hasAllergies" value="allergiesModalInput" checked> Utiliser les Allergies dans ce formulaire
+                      <br>
+                      <input type="radio" id="allergiesUser" name="hasAllergies" value="allergiesUserInput"> Utiliser les Allergies sur votre profil
+                      </div>
                    <div class="modal-footer">
                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                      <button type="submit" name="submit" class="btn btn-primary">Reserver</button>
                    </div>
+                   <div id="echo-msg"></div>
                    </form>
                     </div>
                  </div>

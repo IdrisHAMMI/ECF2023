@@ -85,9 +85,10 @@
           </div>
           <div class="submit-group text-center">
             <button type="submit" name="submit" style="margin-top: 10px;">Ajouter</button>
+            <br>
+            <a href="../index.php">Retourner a L'index</a>
             <!--TIMETABLE FUNCTIONS-->
             <script src="../scripts/appScript.js"></script>
-
             <!--ERROR HANDLING-->
             <?php
         if (isset($_GET["error"])) {

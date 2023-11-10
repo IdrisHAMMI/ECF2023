@@ -8,7 +8,6 @@ $(document).ready(function() {
   function updateAvailability() {
       var date = $('#dateInput').val();
       var hour = $('input[name="periode"]:checked').val() === 'jour' ? $('#hourInput').val() : $('#hourInputNight').val();
-      var seats = $('#platesClient').val();
 
       if (date && hour) {
           $.ajax({
@@ -16,7 +15,8 @@ $(document).ready(function() {
               url: 'booking.php',
               data: { date: date, heure: hour },
               success: function(response) {
-                  $('#disponibilite-message').text(response);
+              //DEBUG
+              $('#disponibilite-message').text(response);
               }
           });
       }
@@ -27,6 +27,7 @@ $(document).ready(function() {
 
   // HANDLE FORM SUBMISSION
   $('#my-form').submit(function(event) {
+    var formData = $('#my-form').serialize();
       event.preventDefault();
       var formData = $(this).serialize();
 
@@ -34,18 +35,14 @@ $(document).ready(function() {
         type: 'POST',
         url: 'booking.php',
         data: formData,
-        dataType: 'json', // Ensure that the response is treated as JSON
+        dataType: 'json', // RESPONSE TYPE
         success: function(response) {
-
-          $('#dispo-message').text(response.message); // Update the modal with the message
+          $('#echo-msg').text(response.message); // UPDATE MODAL WITH MSG BY PRESSING SEND (Success || Error)
         }
       });
   });
   
-$(document).ready(function() {
 function detectJour(jour) {
-    
-    var jour = jour;
 
     $.ajax({
         type: 'POST',
@@ -58,7 +55,6 @@ function detectJour(jour) {
       var select = $('#hourInput');
 
       // ADDING NEW OPTIONS
-      
       options.forEach(function(option) {
         select.append('<option value="' + option.value + '">' + option.label + '</option>');
       });
@@ -66,8 +62,6 @@ function detectJour(jour) {
     });
 }
 function detectSoir(jour) {
-    
-    var jour = jour;
 
     $.ajax({
         type: 'POST',
@@ -87,7 +81,7 @@ function detectSoir(jour) {
 }
 
 $('#dateInput').change(function() {
-  // Clear existing options
+  // CLEAR EXISTING OPTIONS & GETS NEW HOURS FROM THE SELECTED DAY
   $('#hourInput').empty();
   $('#hourInputNight').empty();
   var date = $('#dateInput').val();
@@ -104,13 +98,13 @@ $('#dateInput').change(function() {
   });
 });
 
-$(document).ready(function() {
   // RADIO BUTTON HANDLING
   $('#hourInput').prop('disabled', true);
   $('#hourInputNight').prop('disabled', true);
+  $('#allergiesManual').prop('disabled', false);
 
-
-  $('input[name="periode"]').change(function() {
+  $('input[name="periode"], input[name="hasAllergies"]').change(function() {
+    
   var selectedValue = $(this).val();
 
   // DISABLE SELECT HTML ELEMENT BY WHICH RADIO HAS BEEN PRESSED
@@ -121,6 +115,10 @@ $(document).ready(function() {
     $('#hourInput').prop('disabled', true);
     $('#hourInputNight').prop('disabled', false);
   }
+  //ALLERGIES RADIO ELEMENTS
+  else if (selectedValue === 'allergiesModalInput') {
+    $('#allergiesModal').prop('disabled',false);
+  } else if (selectedValue === 'allergiesUserInput') {
+    $('#allergiesModal').prop('disabled',  true);
+  }
     });
-  });
-});

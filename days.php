@@ -2,7 +2,7 @@
 
 $date = $_POST['date'];
 $jour = date('l', strtotime($date));
-
+//SWITCH STATEMENT TO SELECT EACH DAY
 switch ($jour) {
     case 'Monday':
         $jour_fr = 'Lundi';

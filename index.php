@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!--MAIN APP DEPENDENCIES-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -60,9 +60,7 @@
     </li>
   </ul>
 </nav>
-
 <!---NAV BAR END-->
-
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(45, 26, 26, 0.7);">
         <ul class="nav justify-content-center navbar-nav flex-row" style="padding-left: 0px;">
               <li class="nav-item"><a href='index.php' class='nav-link'>Index</a></li>
@@ -116,7 +114,7 @@
                    <div class="modal-body">
                     <form id="my-form">
                     <p class="modal-paragraph" style="text-align: center;" >Veuillez choisir le jour, l'heure et le nombre<br>de convives avec vous.</p>
-                    <p class="modal-paragraph" style="text-align: center;">Pour des raisons de securité,<br>le nombre de convives accepté est limité a 3.</p>
+                    <p class="modal-paragraph" style="text-align: center;">Pour des raisons de securité,<br>le nombre de reservations accepté est limité a 3.</p>
                       <div class="row">
                         <div class="col-5">
                      <div class="form-floating">
@@ -152,11 +150,20 @@
                        <select id="hourInputNight" class="form-select" name="hourInputNight">
                       </select>
                       </div>
+                      <div>
+                       <label for="alergies_form" style="margin-top: 20px;">Specifier vos alergies</label>
+                       <br>
+                       <textarea class="form-control" id="allergiesModal" name="allergiesString"></textarea>
+                       <br>
+                       <input type="radio" id="allergiesModalInput" name="hasAllergies" value="allergiesModalInput" checked> Utiliser les allergies dans ce formulaire
+                       <br>
+                       <input type="radio" id="allergiesUserInput" name="hasAllergies" value="allergiesUserInput"> Utiliser les allergies sur votre profil
+                   </div>
                    <div class="modal-footer">
                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                      <button type="submit" name="submit" class="btn btn-primary">Reserver</button>
                    </div>
-                   <div id="dispo-message"></div>
+                   <div id="echo-msg"></div>
                    </form>
                     </div>
                  </div>
@@ -166,8 +173,7 @@
         </div>
       </div>
     </div>
-    <script src="scripts/modalReserve.js"> </script>
-    
+    <script src="scripts/modalReserve.js"></script>
     <!--MODAL END-->
     </section>
     <footer>
@@ -184,7 +190,7 @@
           ?>
           <div class="compact-schedule-item">
             <p>
-              <strong><?php echo $row['days']?>:</strong>
+              <?php echo $row['days']?>:
               <?php 
               //IF ALL ROWS ARE CLOSED(Fermée) THEN DISPLAY Fermée. 
               //ELSE DISPLAY SCHEDULE ROWS FROM DATABASE
