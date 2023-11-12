@@ -20,7 +20,13 @@ class LoginContr extends Login {
   }
   
 //EMPTY SIGNUP FUNCTION
-  private function emptyInput() {
-    return empty($this->email) || empty($this->password);
+private function emptyInput() {
+  if(empty($this->email) || empty($this->password)) {
+    $result = false;
   }
+  else {
+    $result = true;
+  }
+  return $result;
+  } 
 }

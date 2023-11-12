@@ -2,17 +2,24 @@
 session_start();
 $pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '');
   
-  $platesNumber = $_POST['platesClient'];
-  $date = $_POST['dateInput'];
+//EMPTY STRING IN MODAL ERROR HANDLING
+//IF THE FOLLOWING POST SUPERGLOBAL VALUES ARE EMPTY THEN ECHOS ERROR MESSAGE & STOPS THE QUERY
+if (empty($_POST['platesClient']) || empty($_POST['dateInput']) || empty($_POST['allergiesString'])) {
+  echo json_encode(array('message' => 'Remplisser tous les champs!'));
+  exit;
+} 
 
-  //IF "ALLERGIESSTRING" IS SET THEN FETCH VALUE, ELSE RETURN EMPTY STRING
-  $publicAllergiesString = isset($_POST['allergiesString']) ? $_POST['allergiesString'] : '';
+$platesNumber = $_POST['platesClient'];
+$date = $_POST['dateInput'];
 
-  if($_POST['hourInput'] == '') {
-    $hour = $_POST['hourInputNight'];
-  } else {
-    $hour = $_POST['hourInput'];
-  }
+// CHECKS IF THE FIRST POST VALUE IS SET, OTHERWISE USE THE THE SECOND ONE
+$hour = isset($_POST['hourInput']) ? $_POST['hourInput'] : $_POST['hourInputNight'];
+$hourInputDay = isset($_POST['hourInput']) ? $_POST['hourInput'] : '';
+$hourInputNight = isset($_POST['hourInputNight']) ? $_POST['hourInputNight'] : '';
+
+// IF "allergiesString' IS SET THEN FETCH ITS VALUE, OTHERWISE USE AN EMPTY STRING
+$publicAllergiesString = isset($_POST['allergiesString']) ? $_POST['allergiesString'] : '';
+
 
 $sql = "SELECT COUNT(*) as bookingSeats FROM booking WHERE bookingDay = :dateInput";
 $query = $pdo->prepare($sql);
@@ -51,6 +58,6 @@ if ($bookingLimit < $ReservationLimit) {
   //IF THERE ARE NO ERRORS, SEND SUCCESS MESSAGE
   $response = "Votre réservation a bien été pris en compte! Merci pour votre confiance.";
   echo json_encode(array('message' => $response));
-} else {
+} else{
   echo json_encode(array('message' => 'Nous sommes complets! Essayer a une autre date.'));
 }
