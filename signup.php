@@ -39,8 +39,15 @@
             <label for="password" style="margin-top: 15px;">Mot de Passe</label>
             <input type="password" class="form-control" name="password" placeholder="Mot de Passe"/>
           </div>
+          <ul>
+          <li style="text-align:left;">Au moins 8 charactères</li>
+          <li style="text-align:left;">Au moins une lettre Majuscule</li>
+          <li style="text-align:left;">Au moins une lettre minuscule</li>
+          <li style="text-align:left;">Au moins un chiffre</li>
+          <li style="text-align:left;">Au moins un des charactères suivants: (!@#$%^&*)</li>
+          </ul>
           <div class="form-group">
-            <label for="password" style="margin-top: 15px;">Retapper votre Mot de Passe</label>
+            <label for="password">Retapper votre Mot de Passe</label>
             <input type="password" class="form-control" name="pwdrepeat" placeholder="Retapper votre Mot de Passe"/>
           </div>
           <div class="form-group">
@@ -68,8 +75,8 @@
                   case "emailnotmatched":
                       echo "<p>Choisissez une adresse email valide.</p>";
                       break;
-                  case "invalidemail":
-                      echo "<p>Cette Email et deja pris.</p>";
+                  case "invalidcredencials":
+                      echo "<p>L'email ou le mot de passe n'est pas valide. Reesayer.</p>";
                       break;
                   case "pwdnotmatched":
                       echo "<p>Les mots de passe doivent être identiques.</p>";

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '');
+$pdo = new PDO('mysql:host=localhost;dbname=id20788719_restaurant', 'id20788719_root', 'Travis00756&');
   
 //EMPTY STRING IN MODAL ERROR HANDLING
 //IF THE FOLLOWING POST SUPERGLOBAL VALUES ARE EMPTY THEN ECHOS ERROR MESSAGE & STOPS THE QUERY

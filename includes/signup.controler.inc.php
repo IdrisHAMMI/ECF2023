@@ -31,7 +31,7 @@ class SignupContr extends Signup {
     }
     if($this->isValidSignup() == false) {
       // echo "Invalid Email!";
-      header("location: ../signup.php?error=invalidemail");
+      header("location: ../signup.php?error=invalidcredencials");
       exit();
     }
     if ($this->pwdMatch() == false) {

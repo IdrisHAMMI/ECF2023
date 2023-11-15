@@ -1,6 +1,6 @@
 <?php
   
-  $pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '');
+  $pdo = new PDO('mysql:host=localhost;dbname=id20788719_restaurant', 'id20788719_root', 'Travis00756&');
 
   //SCHEDULE STATUS
   $scheduleStatus = $_POST['scheduleStatus'];

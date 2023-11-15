@@ -3,7 +3,7 @@
 session_start();
 
 
-$pdo = new PDO('mysql:host=localhost;dbname=ecf_restaurant', 'root', '',);
+$pdo = new PDO('mysql:host=localhost;dbname=id20788719_restaurant', 'id20788719_root', 'Travis00756&');
 
 //ON SUBMIT: CHECKS IF THE FORM IS EMPTY, IF YES THEN START ERROR HANDLING
 //START QUERY AND INSERT FORM POST DATA TO DB
