@@ -226,4 +226,8 @@ footer {
     margin-left: auto;
     margin-right: auto;
   }
+  .navbar-toggler, .web_logo{
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

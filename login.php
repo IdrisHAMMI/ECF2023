@@ -15,6 +15,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
   <link rel="stylesheet" href="style.css"> 
   <title>Quai Antique | Connection</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
 </head>
 <body>
   <section class="signup-form">
@@ -23,24 +25,25 @@
     <img src="assets/website_logo2.png" style="width: 250px;margin-top: 20px;">
   </a>
   </div>
-  <div class="container d-flex text-center justify-content-center border mt-5 rounded" >
-    <div class="row">
-      <div class="col-sm">
-      <div class="panel-heading text-center">
-        <h1>Se Connecter</h1>
-        </div>
-      <div class="panel-body">
-        <form action="includes/login.inc.php" style="width: 450px; margin: auto;" method="post">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control"  name="email" placeholder="Email" />
-          </div>
-          <div class="form-group">
-            <label for="password">Mot de Passe</label>
-            <input type="password" class="form-control"  name="password" placeholder="Mot de Passe" />
-          </div>
-          <div class="submit-group">
-            <button type="submit" name="submit" style="margin-top: 15px;">Connection</button>
+  <div class="container mt-5">
+      <div class="row justify-content-center text-center">
+        <div class="col-md-6">
+          <div class="border rounded p-4">
+            <div class="text-center">
+              <h1>Se Connecter</h1>
+            </div>
+            <div class="panel-body">
+              <form action="includes/login.inc.php" method="post">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="text" class="form-control" name="email" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Mot de Passe</label>
+                  <input type="password" class="form-control" name="password" placeholder="Mot de Passe">
+                </div>
+                <div class="mb-3">
+<button type="submit" name="submit" style="margin-top: 15px;">Connection</button>
             <br>
             <p>Pas de compte? <br><a href="signup.php">Inscrivez vous Maintenant !</a></p>
           </form>

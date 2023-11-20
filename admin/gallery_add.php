@@ -21,7 +21,7 @@
 <body>
    <!--NAV BAR START-->
    <nav class="navbar navbar-expand-lg navbar-light border-bottom">
-    <img src="../assets/website_logo2.png" style="width: 250px; margin-top: 20px;">
+    <img src="../assets/website_logo2.png" class="img-fluid web_logo" style="width: 250px; margin-top: 20px;">
     <button class="navbar-toggler" style="margin-top: 30px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
