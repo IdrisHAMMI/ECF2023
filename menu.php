@@ -188,7 +188,7 @@
               //IF ALL ROWS ARE CLOSED(Fermée) THEN DISPLAY Fermée. 
               //ELSE DISPLAY SCHEDULE ROWS FROM DATABASE
               if ($row['timeNoonOpening'] == 'Fermée' && $row['timeNightOpening'] == 'Fermée') {
-                echo 'Fermée';
+                echo 'Fermé';
               } else {
                 echo $row['timeNoonOpening'] . ' - ' . $row['timeNoonEnd'] . ' & ' . $row['timeNightOpening'] . ' - ' . $row['timeNightEnd'];
               }
