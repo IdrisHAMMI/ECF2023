@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `bookingDay` varchar(50) DEFAULT NULL,
   `bookingTime` varchar(50) DEFAULT NULL,
   `bookingSeats` varchar(50) DEFAULT NULL,
-  `bookingAlergies` varchar(50) DEFAULT NULL,
+  `bookingAlergies` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`bookingId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=303 DEFAULT CHARSET=latin1;
 
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `userEmail`, `userPass`, `allergies`, `convives`, `role_id`) VALUES
-(7, 'idris@gmail.com', '$2y$10$ExVzy9f5DSM9OPBF010AiO.iY3vHDWX2PmLLp1VsEyH8BKQrkjMKC', 'non', '1 seul', '2'),
+(7, 'idris@gmail.com', '$2y$10$ExVzy9f5DSM9OPBF010AiO.iY3vHDWX2PmLLp1VsEyH8BKQrkjMKC', 'non', '1', '2'),
 (10, 'hammi.idris@gmail.com', '$2y$10$OCrxoWHm9GHSE.xgM1LbKOVYcXxZT0eAnw.89ip3y3m0iqIY37o1G', 'non', '1', '1');
 COMMIT;
 
