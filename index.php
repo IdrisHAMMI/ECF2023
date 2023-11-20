@@ -75,7 +75,7 @@
         <!--NAV BAR END-->
         <div class="container">
           <img src="assets/index_welcome.png" class="mx-auto d-block img-fluid" alt="index-welcome">
-          <h3 id="welcome_footer"><i>Découvrez de nouvelles saveur au Quai Antique</i></h3>
+          <h3 id="welcome_footer"><i>Découvrez de nouvelles saveurs au Quai Antique</i></h3>
         </div>
         <br>
         <section class="menu-section">
